@@ -6,7 +6,7 @@
           Leo Saputra Hulu
         </p>
         <p class="text-gray-400">
-          Fullstack Developer · Fokus pada performa, kualitas kode, dan kebutuhan klien.
+          Fullstack Developer (Front-end &amp; Back-end) · Fokus pada performa, kualitas kode, dan kebutuhan klien.
         </p>
         <p class="text-[11px] text-gray-500">
           © {{ new Date().getFullYear() }} · Dibangun dengan Vue dan Tailwind CSS.
@@ -42,4 +42,3 @@
 
 <style scoped>
 </style>
-

@@ -42,9 +42,10 @@
           <!-- Description dengan max-width dinamis -->
           <p class="max-w-[280px] sm:max-w-sm text-gray-400 
                     text-sm sm:text-base md:text-lg leading-relaxed">
-            Saya membangun <span class="text-white font-medium border-b border-violet-500/50 
+            Saya Leo (Leo Hulu / Leo S. Hulu), seorang fullstack developer yang mengerjakan 
+            <span class="text-white font-medium border-b border-violet-500/50 
                                        hover:border-violet-400 transition-colors">
-              aplikasi web yang skalabel
+              front-end dan back-end untuk aplikasi web yang skalabel
             </span> dan pengalaman pengguna yang mulus.
           </p>
         </div>
@@ -58,7 +59,7 @@
             
             <img
               :src="heroPhoto"
-              alt="Foto Leo"
+              alt="Foto Leo Saputra Hulu - Fullstack Developer"
               class="relative z-10 w-full h-auto max-h-[400px] sm:max-h-[500px] 
                      md:max-h-[600px] lg:max-h-[720px] object-contain 
                      drop-shadow-[0_20px_80px_rgba(0,0,0,1)] 
@@ -117,7 +118,6 @@
   </section>
 </template>
 
-sc
 <script setup>
 import heroPhoto from '../public/foto_profile.webp'
 </script>

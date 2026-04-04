@@ -24,8 +24,8 @@
           Tentang Leo Saputra Hulu
         </h2>
         <p class="text-sm sm:text-base text-gray-300 leading-relaxed max-w-xl">
-          Saya seorang full-stack developer yang fokus membangun produk web yang cepat, rapi, dan mudah dirawat,
-          dengan pendekatan yang berorientasi pada kebutuhan pengguna dan tujuan bisnis.
+          Saya seorang fullstack developer (front-end dan back-end) yang fokus membangun produk web yang cepat, rapi,
+          dan mudah dirawat dengan pendekatan yang berorientasi pada kebutuhan pengguna dan tujuan bisnis.
         </p>
       </div>
 
@@ -64,8 +64,8 @@
                 React, Laravel, Python.
               </p>
               <p class="leading-relaxed text-sm">
-                Saya fokus di ekosistem JavaScript untuk membangun aplikasi end-to-end:
-                dari antarmuka yang responsif, API yang rapi, sampai pengelolaan data di database.
+                Saya fokus di ekosistem JavaScript sebagai fullstack developer untuk membangun aplikasi end-to-end:
+                dari antarmuka front-end yang responsif, API back-end yang rapi, sampai pengelolaan data di database.
               </p>
               
               <!-- Skills Tags -->
@@ -93,8 +93,8 @@
             </h3>
             <div class="space-y-3 text-sm">
               <p class="leading-relaxed">
-                Saya mulai dari mengerjakan proyek kecil secara freelance, lalu perlahan terlibat
-                di proyek-proyek yang lebih besar dan kompleks.
+                Saya mulai dari mengerjakan proyek kecil secara freelance sebagai developer front-end dan back-end,
+                lalu perlahan terlibat di proyek-proyek yang lebih besar dan kompleks.
               </p>
               <p class="leading-relaxed">
                 Saya terbiasa bekerja mandiri, tapi juga sering berkolaborasi dengan developer yang lebih
