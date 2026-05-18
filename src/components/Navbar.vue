@@ -10,31 +10,45 @@
       
       <!-- Logo dengan ukuran responsive -->
       <a href="#home" 
-         class="text-base sm:text-lg md:text-xl font-semibold tracking-tight text-white 
-                hover:text-violet-400 transition-colors
+         class="flex items-center hover:opacity-85 transition-opacity
                 active:scale-95 touch-manipulation">
-        Leo<span class="text-violet-400">.</span>
+        <img :src="logoNavbar" 
+             alt="Logo Leo" 
+             class="h-6 w-auto sm:h-7 md:h-8 object-contain" />
       </a>
 
       <!-- Desktop Navigation -->
-      <div class="hidden md:flex items-center gap-6 lg:gap-8">
-        <a v-for="item in navItems" 
-           :key="item.href"
-           :href="item.href"
-           class="text-sm lg:text-base text-gray-300 hover:text-white 
-                  transition-colors relative group
-                  after:content-[''] after:absolute after:bottom-0 after:left-0 
-                  after:w-0 after:h-0.5 after:bg-violet-500
-                  after:transition-all after:duration-300
-                  hover:after:w-full">
-          {{ item.label }}
-        </a>
+      <div class="hidden md:flex items-center gap-5 lg:gap-7">
+        <template v-for="item in navItems" :key="item.label">
+          <!-- Glassmorphic Pill Action Buttons for CV & Certificate -->
+          <a v-if="item.isExternal"
+             :href="item.href"
+             :download="item.download"
+             target="_blank"
+             rel="noopener"
+             class="text-xs lg:text-sm text-violet-300 hover:text-white font-bold font-techno
+                    px-4 py-1.5 rounded-lg border border-violet-500/20 bg-violet-500/5 hover:bg-violet-600 
+                    hover:border-violet-500 shadow-md shadow-violet-500/5 transition-all active:scale-95 duration-200">
+            {{ item.label }}
+          </a>
+          <!-- Standard Smooth Section Anchor Links -->
+          <a v-else
+             :href="item.href"
+             class="text-sm lg:text-base text-gray-300 hover:text-white 
+                    transition-colors relative group py-1.5
+                    after:content-[''] after:absolute after:bottom-0 after:left-0 
+                    after:w-0 after:h-0.5 after:bg-violet-500
+                    after:transition-all after:duration-300
+                    hover:after:w-full">
+            {{ item.label }}
+          </a>
+        </template>
       </div>
 
       <!-- Mobile Menu Button - ukuran lebih besar untuk touch -->
       <button type="button"
               class="inline-flex items-center justify-center 
-                     rounded-full border border-white/15 bg-white/5 
+                     rounded-lg border border-white/15 bg-white/5 
                      p-2.5 sm:p-3 text-gray-100 
                      hover:bg-white/10 active:scale-95 
                      transition-all duration-200
@@ -77,16 +91,21 @@
     >
       <div v-if="isOpen" 
            class="md:hidden border-t border-white/10 bg-black/95 backdrop-blur-md">
-        <div class="mx-auto max-w-7xl flex flex-col px-4 py-3 sm:py-4 space-y-2">
-          <a v-for="item in navItems" 
-             :key="item.href"
-             :href="item.href"
-             class="py-3 px-4 text-gray-200 hover:text-white 
-                    hover:bg-white/5 rounded-lg transition-all
-                    active:scale-[0.98] touch-manipulation"
-             @click="isOpen = false">
-            {{ item.label }}
-          </a>
+        <div class="mx-auto max-w-7xl flex flex-col px-4 py-3 space-y-1">
+          <template v-for="item in navItems" :key="item.label">
+            <!-- Mobile list items (all flat, clean links) -->
+            <a :href="item.href"
+               :download="item.download"
+               target="_blank"
+               rel="noopener"
+               class="py-2.5 px-4 text-zinc-300 hover:text-white hover:bg-white/5 rounded-lg transition-all
+                      active:scale-[0.98] touch-manipulation text-sm font-medium font-sans flex items-center justify-between"
+               :class="{ 'text-violet-400 font-semibold': item.isExternal }"
+               @click="isOpen = false">
+              <span>{{ item.label }}</span>
+              <span v-if="item.isExternal" class="text-[9px] font-bold text-violet-400/90 border border-violet-500/25 px-1.5 py-0.5 rounded bg-violet-500/5 uppercase font-techno">PDF</span>
+            </a>
+          </template>
         </div>
       </div>
     </transition>
@@ -95,6 +114,9 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
+import logoNavbar from '../public/logo-navbar.png'
+import cvPdfUrl from '../public/CV - Leo Saputra Hulu.pdf?url'
+import certificatePdfUrl from '../public/FULL STACK DEVELOPER - Leo Saputra Hulu - E-certificate Harisenin Bootcamp Full Stack Developer Batch 18.pdf?url'
 
 const isOpen = ref(false)
 const scrolled = ref(false)
@@ -102,6 +124,9 @@ const scrolled = ref(false)
 const navItems = [
   { href: '#home', label: 'Home' },
   { href: '#about', label: 'Tentang' },
+  { href: '#projects', label: 'Proyek' },
+  { href: cvPdfUrl, label: 'CV', isExternal: true, download: 'CV - Leo Saputra Hulu.pdf' },
+  { href: certificatePdfUrl, label: 'Sertifikat', isExternal: true },
   { href: '#connect', label: 'Kontak' }
 ]
 

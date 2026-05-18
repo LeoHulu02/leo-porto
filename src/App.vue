@@ -2,6 +2,7 @@
 import Navbar from './components/Navbar.vue'
 import HeroSection from './components/HeroSection.vue'
 import AboutSection from './components/AboutSection.vue'
+import ProjectsSection from './components/ProjectsSection.vue'
 import Footer from './components/Footer.vue'
 </script>
 
@@ -11,6 +12,7 @@ import Footer from './components/Footer.vue'
     <main>
       <HeroSection />
       <AboutSection />
+      <ProjectsSection />
     </main>
     <Footer />
   </div>
