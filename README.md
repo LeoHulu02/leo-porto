@@ -143,6 +143,23 @@ VITE_CONTACT_EMAIL=email-kamu@gmail.com
 
 > Tanpa `.env`, form tetap tampil tapi nonaktif — WhatsApp tetap berfungsi sebagai fallback.
 
+### Troubleshooting error 400 (Vercel / production)
+
+1. **`VITE_EMAILJS_SERVICE_ID` harus `service_xxxxx`** — **bukan** Public Key.  
+   - Public Key → `VITE_EMAILJS_PUBLIC_KEY`  
+   - Service ID → Email Services → copy ID yang diawali `service_`
+
+2. **Redeploy wajib** setelah mengubah env di Vercel.  
+   Variabel `VITE_*` Vite **dibake saat `npm run build`**, bukan saat runtime.
+
+3. **Allowed origins** di EmailJS:  
+   Account → Security → tambahkan `https://leo-hulu.vercel.app`
+
+4. **Template variables** di dashboard harus ada (salah satu set):  
+   `from_name`, `from_email`, `message` **atau** `name`, `email`, `message`
+
+5. Cek **EmailJS dashboard → Email Log** untuk pesan error detail.
+
 ---
 
 ## Scripts
