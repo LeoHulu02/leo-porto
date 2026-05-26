@@ -218,6 +218,7 @@
           <a
             href="#about"
             class="group relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-violet-400/50 bg-violet-950/40 px-8 py-3.5 text-sm font-extrabold uppercase tracking-[0.2em] text-violet-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition hover:border-violet-300/70 hover:bg-violet-900/50 hover:shadow-[0_0_28px_rgba(139,92,246,0.35)] active:scale-[0.98] motion-reduce:transition-none sm:px-10 sm:py-4 font-techno"
+            @click="onAboutClick"
           >
             <span>Tentang Saya</span>
             <span
@@ -251,11 +252,10 @@
         class="pointer-events-auto mx-auto flex max-w-3xl flex-wrap items-center justify-center gap-x-6 gap-y-3 xs:gap-x-8 sm:gap-x-10"
         aria-label="Tautan cepat"
       >
-        <a
-          :href="certificatePdfUrl"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group flex flex-col items-center gap-1 text-zinc-500 transition hover:text-violet-300"
+        <button
+          type="button"
+          class="group flex flex-col items-center gap-1 text-zinc-500 transition hover:text-violet-300 touch-manipulation"
+          @click="openPdfPreview('certificate')"
         >
           <svg
             class="h-6 w-6 text-zinc-400 transition group-hover:text-violet-400 sm:h-7 sm:w-7"
@@ -285,13 +285,12 @@
           <span class="text-[10px] font-medium uppercase tracking-wider sm:text-[11px] font-techno">
             Sertifikat
           </span>
-        </a>
+        </button>
 
-        <a
-          :href="cvPdfUrl"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group flex flex-col items-center gap-1 text-zinc-500 transition hover:text-violet-300"
+        <button
+          type="button"
+          class="group flex flex-col items-center gap-1 text-zinc-500 transition hover:text-violet-300 touch-manipulation"
+          @click="openPdfPreview('cv')"
         >
           <svg
             class="h-6 w-6 text-zinc-400 transition group-hover:text-violet-400 sm:h-7 sm:w-7"
@@ -324,7 +323,7 @@
             />
           </svg>
           <span class="text-[10px] font-medium uppercase tracking-wider sm:text-[11px] font-techno">CV</span>
-        </a>
+        </button>
 
         <a
           href="https://github.com/LeoHulu02"
@@ -404,8 +403,14 @@ import {
 } from 'simple-icons'
 
 import heroPhoto from '../public/foto_profile.webp'
-import certificatePdfUrl from '../public/FULL STACK DEVELOPER - Leo Saputra Hulu - E-certificate Harisenin Bootcamp Full Stack Developer Batch 18.pdf?url'
-import cvPdfUrl from '../public/CV - Leo Saputra Hulu.pdf?url'
+import { usePdfPreview } from '../composables/usePdfPreview.js'
+import { handleSectionNavClick } from '../composables/useSectionScroll.js'
+
+const { openPdfPreview } = usePdfPreview()
+
+const onAboutClick = (event) => {
+  handleSectionNavClick(event, '#about')
+}
 
 /** LinkedIn was removed from simple-icons (trademark); path matches classic SI glyph (CC0). */
 const LINKEDIN_ICON_PATH =

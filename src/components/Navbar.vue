@@ -4,14 +4,15 @@
                  border-b border-white/5
                  transition-all duration-300"
           :class="{ 'bg-black/60 backdrop-blur-lg': scrolled }">
-    <nav class="mx-auto flex max-w-7xl items-center justify-between 
+    <nav ref="navRef" class="mx-auto flex max-w-7xl items-center justify-between 
                 px-4 sm:px-6 lg:px-8 
                 py-2 sm:py-3 md:py-4">
       
       <!-- Logo dengan ukuran responsive -->
       <a href="#home" 
          class="flex items-center hover:opacity-85 transition-opacity
-                active:scale-95 touch-manipulation">
+                active:scale-95 touch-manipulation"
+         @click="onNavClick($event, '#home')">
         <img :src="logoNavbar" 
              alt="Logo Leo" 
              class="h-6 w-auto sm:h-7 md:h-8 object-contain" />
@@ -21,16 +22,14 @@
       <div class="hidden md:flex items-center gap-5 lg:gap-7">
         <template v-for="item in navItems" :key="item.label">
           <!-- Glassmorphic Pill Action Buttons for CV & Certificate -->
-          <a v-if="item.isExternal"
-             :href="item.href"
-             :download="item.download"
-             target="_blank"
-             rel="noopener"
+          <button v-if="item.pdfKey"
+             type="button"
              class="text-xs lg:text-sm text-violet-300 hover:text-white font-bold font-techno
                     px-4 py-1.5 rounded-lg border border-violet-500/20 bg-violet-500/5 hover:bg-violet-600 
-                    hover:border-violet-500 shadow-md shadow-violet-500/5 transition-all active:scale-95 duration-200">
+                    hover:border-violet-500 shadow-md shadow-violet-500/5 transition-all active:scale-95 duration-200 touch-manipulation"
+             @click="openPdfPreview(item.pdfKey)">
             {{ item.label }}
-          </a>
+          </button>
           <!-- Standard Smooth Section Anchor Links -->
           <a v-else
              :href="item.href"
@@ -39,7 +38,8 @@
                     after:content-[''] after:absolute after:bottom-0 after:left-0 
                     after:w-0 after:h-0.5 after:bg-violet-500
                     after:transition-all after:duration-300
-                    hover:after:w-full">
+                    hover:after:w-full"
+             @click="onNavClick($event, item.href)">
             {{ item.label }}
           </a>
         </template>
@@ -94,16 +94,20 @@
         <div class="mx-auto max-w-7xl flex flex-col px-4 py-3 space-y-1">
           <template v-for="item in navItems" :key="item.label">
             <!-- Mobile list items (all flat, clean links) -->
-            <a :href="item.href"
-               :download="item.download"
-               target="_blank"
-               rel="noopener"
+            <button v-if="item.pdfKey"
+               type="button"
+               class="w-full py-2.5 px-4 text-violet-400 font-semibold hover:text-white hover:bg-white/5 rounded-lg transition-all
+                      active:scale-[0.98] touch-manipulation text-sm font-medium font-sans flex items-center justify-between text-left"
+               @click="handlePdfClick(item.pdfKey)">
+              <span>{{ item.label }}</span>
+              <span class="text-[9px] font-bold text-violet-400/90 border border-violet-500/25 px-1.5 py-0.5 rounded bg-violet-500/5 uppercase font-techno">PDF</span>
+            </button>
+            <a v-else
+               :href="item.href"
                class="py-2.5 px-4 text-zinc-300 hover:text-white hover:bg-white/5 rounded-lg transition-all
                       active:scale-[0.98] touch-manipulation text-sm font-medium font-sans flex items-center justify-between"
-               :class="{ 'text-violet-400 font-semibold': item.isExternal }"
-               @click="isOpen = false">
+               @click="onNavClick($event, item.href)">
               <span>{{ item.label }}</span>
-              <span v-if="item.isExternal" class="text-[9px] font-bold text-violet-400/90 border border-violet-500/25 px-1.5 py-0.5 rounded bg-violet-500/5 uppercase font-techno">PDF</span>
             </a>
           </template>
         </div>
@@ -115,20 +119,38 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import logoNavbar from '../public/logo-navbar.png'
-import cvPdfUrl from '../public/CV - Leo Saputra Hulu.pdf?url'
-import certificatePdfUrl from '../public/FULL STACK DEVELOPER - Leo Saputra Hulu - E-certificate Harisenin Bootcamp Full Stack Developer Batch 18.pdf?url'
+import { usePdfPreview } from '../composables/usePdfPreview.js'
+import { handleSectionNavClick, updateSiteHeaderOffset } from '../composables/useSectionScroll.js'
+
+const { openPdfPreview } = usePdfPreview()
 
 const isOpen = ref(false)
 const scrolled = ref(false)
+const navRef = ref(null)
 
 const navItems = [
   { href: '#home', label: 'Home' },
   { href: '#about', label: 'Tentang' },
   { href: '#projects', label: 'Proyek' },
-  { href: cvPdfUrl, label: 'CV', isExternal: true, download: 'CV - Leo Saputra Hulu.pdf' },
-  { href: certificatePdfUrl, label: 'Sertifikat', isExternal: true },
+  { href: '#', label: 'CV', pdfKey: 'cv' },
+  { href: '#', label: 'Sertifikat', pdfKey: 'certificate' },
   { href: '#connect', label: 'Kontak' }
 ]
+
+const handlePdfClick = (pdfKey) => {
+  isOpen.value = false
+  openPdfPreview(pdfKey)
+}
+
+const onNavClick = (event, href) => {
+  handleSectionNavClick(event, href, () => {
+    isOpen.value = false
+  })
+}
+
+const syncHeaderOffset = () => {
+  updateSiteHeaderOffset(navRef.value)
+}
 
 // Handle scroll effect
 const handleScroll = () => {
@@ -136,11 +158,14 @@ const handleScroll = () => {
 }
 
 onMounted(() => {
+  syncHeaderOffset()
   window.addEventListener('scroll', handleScroll, { passive: true })
+  window.addEventListener('resize', syncHeaderOffset, { passive: true })
 })
 
 onBeforeUnmount(() => {
   window.removeEventListener('scroll', handleScroll)
+  window.removeEventListener('resize', syncHeaderOffset)
 })
 </script>
 
@@ -149,11 +174,6 @@ onBeforeUnmount(() => {
 .touch-manipulation {
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-}
-
-/* Smooth scroll behavior for anchor links */
-html {
-  scroll-behavior: smooth;
 }
 
 /* Mobile menu transitions */

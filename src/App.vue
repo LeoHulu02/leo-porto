@@ -3,7 +3,9 @@ import Navbar from './components/Navbar.vue'
 import HeroSection from './components/HeroSection.vue'
 import AboutSection from './components/AboutSection.vue'
 import ProjectsSection from './components/ProjectsSection.vue'
+import ContactSection from './components/ContactSection.vue'
 import Footer from './components/Footer.vue'
+import PdfPreviewModal from './components/PdfPreviewModal.vue'
 </script>
 
 <template>
@@ -13,8 +15,10 @@ import Footer from './components/Footer.vue'
       <HeroSection />
       <AboutSection />
       <ProjectsSection />
+      <ContactSection />
     </main>
     <Footer />
+    <PdfPreviewModal />
   </div>
 </template>
 

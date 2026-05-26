@@ -2,8 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --site-header-offset: 5.5rem;
+  --site-scroll-gap: 1.25rem;
+}
+
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--site-header-offset);
+}
+
+/* Anchor sections — title stays visible below fixed navbar */
+#about,
+#projects,
+#connect {
+  scroll-margin-top: var(--site-header-offset);
 }
 
 body {

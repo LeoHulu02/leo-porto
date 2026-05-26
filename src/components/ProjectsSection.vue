@@ -44,8 +44,8 @@
       <div class="relative max-w-3xl mx-auto" data-reveal>
         
         <!-- Main Slider Window -->
-        <div class="relative overflow-hidden rounded-xl border border-white/10 bg-zinc-950 
-                    shadow-2xl transition-all duration-300 group h-72 sm:h-96 md:h-[460px]"
+        <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-950 
+                    shadow-2xl shadow-violet-500/5 transition-all duration-300 group h-72 sm:h-96 md:h-[460px]"
              @mouseenter="pauseAutoplay"
              @mouseleave="startAutoplay"
              @touchstart="handleTouchStart"
@@ -65,112 +65,50 @@
                 <img
                   :src="currentProject.image"
                   :alt="currentProject.title"
-                  class="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-103"
+                  class="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                   :class="imageLoading[currentProject.id] ? 'opacity-0' : 'opacity-100'"
                   @load="handleImageLoad(currentProject.id)"
                   loading="lazy"
                 />
 
-                <!-- Dark Gradient Overlay (For Title Readability) -->
-                <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+                <!-- Subtle vignette — keeps image visible, aids title readability -->
+                <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/20" />
 
                 <!-- Floating Badges (Top-Left) -->
-                <div class="absolute left-6 top-6 flex items-center gap-2">
-                  <span class="inline-flex items-center rounded-md border border-white/10 
-                               bg-black/60 px-3 py-1.5 text-[9px] font-bold font-techno uppercase tracking-wider
-                               text-white backdrop-blur-md">
+                <div class="absolute left-4 top-4 flex items-center gap-2 sm:left-6 sm:top-6">
+                  <span class="inline-flex items-center rounded-md border border-white/15 
+                               bg-black/40 px-3 py-1.5 text-[9px] font-bold font-techno uppercase tracking-wider
+                               text-white backdrop-blur-sm">
                     {{ currentProject.privacyLabel }}
                   </span>
                   <span v-if="currentProject.isWip"
                         class="inline-flex items-center rounded-md border border-fuchsia-400/30 
-                               bg-fuchsia-500/20 px-3 py-1.5 text-[9px] font-bold font-techno uppercase tracking-wider text-fuchsia-200">
+                               bg-fuchsia-500/15 px-3 py-1.5 text-[9px] font-bold font-techno uppercase tracking-wider text-fuchsia-200 backdrop-blur-sm">
                     WIP
                   </span>
                 </div>
 
-                <!-- Floating Project Title (Normal State - Bottom-Left) -->
-                <div class="absolute bottom-0 inset-x-0 p-6 sm:p-8 space-y-1.5 transition-all duration-300 group-hover:opacity-0 group-hover:translate-y-4">
-                  <h3 class="text-xl sm:text-2xl font-black text-white font-techno tracking-tight">
-                    {{ currentProject.title }}
-                  </h3>
-                  <div class="flex items-center justify-between gap-4">
-                    <p class="text-xs sm:text-sm text-zinc-300 font-medium font-sans">
-                      {{ currentProject.subtitle }}
-                    </p>
-                    <span class="rounded bg-violet-500/20 border border-violet-500/30 
-                                 px-2.5 py-1 text-[9px] font-bold font-techno uppercase tracking-wider text-violet-300">
-                      {{ currentProject.role }}
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Hover Slide-Up Glassmorphic Explanation Overlay (Inside Image Frame) -->
-              <div class="absolute inset-0 translate-y-full group-hover:translate-y-0 
-                          transition-transform duration-500 bg-[#08080ceb] backdrop-blur-lg 
-                          p-6 sm:p-8 flex flex-col justify-between z-10 overflow-y-auto">
-                
-                <div class="space-y-4">
-                  <!-- Header inside overlay -->
-                  <div class="space-y-1">
-                    <h4 class="text-lg sm:text-xl font-bold text-violet-400 font-techno">
+                <!-- Always-visible transparent footer: title + detail CTA -->
+                <div class="absolute inset-x-0 bottom-0 z-10 p-4 sm:p-7">
+                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent sm:from-black/70 sm:via-black/10" />
+                  <div class="relative flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
+                    <h3 class="line-clamp-2 min-w-0 text-base font-black leading-snug tracking-tight text-white font-techno sm:text-2xl md:text-[1.65rem]">
                       {{ currentProject.title }}
-                    </h4>
-                    <p class="text-xs text-zinc-400 font-sans">
-                      {{ currentProject.subtitle }}
-                    </p>
+                    </h3>
+
+                    <button
+                      type="button"
+                      :aria-label="`Lihat detail proyek ${currentProject.title}`"
+                      class="inline-flex min-h-[44px] w-full shrink-0 items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white backdrop-blur-md transition-all hover:border-violet-400/40 hover:bg-violet-600/90 hover:shadow-lg hover:shadow-violet-500/25 active:scale-[0.98] font-techno touch-manipulation sm:w-auto sm:min-w-[148px] sm:text-[11px]"
+                      @click.stop="openProject(currentProject)">
+                      <span>Lihat Detail</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
+                           stroke-width="2.5" stroke="currentColor" class="h-3.5 w-3.5" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                      </svg>
+                    </button>
                   </div>
-
-                  <!-- Metrics -->
-                  <div v-if="currentProject.metrics?.length" class="flex flex-wrap gap-1.5">
-                    <span v-for="metric in currentProject.metrics" :key="metric"
-                          class="rounded border border-violet-400/20 bg-violet-500/5 
-                                 px-2.5 py-1 text-[9px] font-bold font-techno uppercase tracking-wider text-violet-300">
-                      {{ metric }}
-                    </span>
-                  </div>
-
-                  <!-- Short Explanation -->
-                  <p class="text-xs sm:text-sm leading-relaxed text-zinc-200 font-sans">
-                    {{ currentProject.description }}
-                  </p>
-
-                  <!-- Bullet highlights -->
-                  <ul class="space-y-2 text-xs text-zinc-400 font-sans">
-                    <li v-for="(item, idx) in currentProject.highlights" :key="idx" 
-                        class="flex gap-2">
-                      <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-violet-400"></span>
-                      <span class="leading-relaxed text-zinc-300">{{ item }}</span>
-                    </li>
-                  </ul>
                 </div>
-
-                <!-- Overlay Actions Button -->
-                <div class="pt-4 border-t border-white/5 flex flex-wrap items-center justify-between gap-4">
-                  <!-- Stack list in overlay -->
-                  <div class="flex flex-wrap gap-1.5">
-                    <span v-for="tag in currentProject.stack" :key="tag"
-                          class="rounded bg-white/[0.04] px-2 py-0.5 text-[9px] font-bold font-techno text-zinc-400">
-                      {{ tag }}
-                    </span>
-                  </div>
-
-                  <!-- Primary spec trigger button -->
-                  <button
-                    type="button"
-                    :aria-label="`Lihat detail spesifikasi proyek ${currentProject.title}`"
-                    class="inline-flex items-center gap-1.5 rounded-lg bg-violet-600 
-                           px-5 py-2.5 text-xs font-black font-techno uppercase tracking-wider text-white 
-                           shadow-lg shadow-violet-500/20 transition-all hover:bg-violet-500 active:scale-95"
-                    @click.stop="openProject(currentProject)">
-                    <span>Lihat Spesifikasi</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
-                         stroke-width="2.5" stroke="currentColor" class="h-3.5 w-3.5" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                    </svg>
-                  </button>
-                </div>
-
               </div>
 
             </div>
@@ -210,16 +148,21 @@
       </div>
 
       <!-- Slide dots indicator -->
-      <div class="flex justify-center items-center gap-2.5 mt-6" data-reveal>
-        <button v-for="(project, index) in filteredProjects"
-                :key="project.id"
-                @click="goToSlide(index)"
-                :aria-label="`Lompat ke slide ${index + 1}`"
-                class="h-2 rounded-full transition-all duration-300 focus:outline-none"
-                :class="index === currentIndex 
-                  ? 'w-6 bg-violet-500' 
-                  : 'w-2 bg-white/20 hover:bg-white/40'">
-        </button>
+      <div class="mt-6 space-y-2" data-reveal>
+        <div class="flex items-center justify-center gap-2.5">
+          <button v-for="(project, index) in filteredProjects"
+                  :key="project.id"
+                  @click="goToSlide(index)"
+                  :aria-label="`Lompat ke slide ${index + 1}`"
+                  class="h-2.5 rounded-full transition-all duration-300 focus:outline-none touch-manipulation"
+                  :class="index === currentIndex 
+                    ? 'w-7 bg-violet-500' 
+                    : 'w-2.5 bg-white/20 hover:bg-white/40'">
+          </button>
+        </div>
+        <p class="text-center text-[10px] text-zinc-500 font-sans sm:hidden">
+          Geser kiri/kanan pada card untuk melihat proyek lain
+        </p>
       </div>
 
       <!-- Footer NDA Disclaimer -->
@@ -242,32 +185,40 @@
       leave-from-class="opacity-100"
       leave-to-class="opacity-0">
       <div v-if="activeProject"
-           class="fixed inset-0 z-50 flex items-end justify-center bg-black/80 p-4 backdrop-blur-sm sm:items-center"
+           class="fixed inset-0 z-[100] flex items-end justify-center bg-black/60 p-0 backdrop-blur-md sm:items-center sm:p-4"
            role="dialog"
            aria-modal="true"
-           :aria-label="`Spesifikasi Proyek ${activeProject.title}`"
+           :aria-label="`Detail Proyek ${activeProject.title}`"
            @click.self="closeProject">
         
         <!-- Modal Content Container -->
-        <div class="w-full max-w-2xl overflow-hidden rounded-xl border border-white/10 
-                    bg-[#08080c] shadow-2xl"
+        <div class="flex max-h-[92dvh] w-full max-w-2xl flex-col overflow-hidden rounded-t-2xl border border-white/10 
+                    bg-[#08080c] shadow-2xl shadow-violet-500/10 sm:rounded-2xl"
              role="document">
           
           <!-- Modal Header -->
-          <div class="flex items-center justify-between gap-4 border-b border-white/10 px-5 py-4 sm:px-6">
-            <div class="min-w-0">
-              <h3 class="truncate text-base sm:text-lg font-bold text-white font-techno">
+          <div class="flex shrink-0 items-start justify-between gap-4 border-b border-white/10 px-4 py-4 sm:px-6">
+            <div class="min-w-0 flex-1">
+              <div class="mb-1.5 flex flex-wrap items-center gap-2">
+                <span class="rounded border border-violet-500/25 bg-violet-500/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-violet-300 font-techno">
+                  {{ activeProject.privacyLabel }}
+                </span>
+                <span v-if="activeProject.isWip" class="rounded border border-fuchsia-400/25 bg-fuchsia-500/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-fuchsia-300 font-techno">
+                  WIP
+                </span>
+              </div>
+              <h3 class="text-base font-bold leading-snug text-white font-techno sm:text-lg">
                 {{ activeProject.title }}
               </h3>
-              <p class="truncate text-xs text-zinc-400 font-sans">
+              <p class="mt-0.5 text-xs leading-relaxed text-zinc-400 font-sans sm:text-sm">
                 {{ activeProject.subtitle }}
               </p>
             </div>
             <button
               type="button"
-              class="inline-flex h-9 w-9 flex-shrink-0 items-center justify-center 
+              class="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center 
                      rounded-lg border border-white/10 bg-white/5 text-white 
-                     transition-colors hover:bg-white/10 active:scale-95"
+                     transition-colors hover:bg-white/10 active:scale-95 touch-manipulation"
               aria-label="Tutup dialog"
               @click="closeProject">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
@@ -277,8 +228,9 @@
             </button>
           </div>
 
-          <!-- Modal Body -->
-          <div class="grid gap-5 p-5 sm:grid-cols-2 sm:gap-6 sm:p-6">
+          <!-- Modal Body (scrollable on mobile) -->
+          <div class="min-h-0 flex-1 overflow-y-auto overscroll-contain">
+            <div class="grid gap-5 p-4 sm:grid-cols-2 sm:gap-6 sm:p-6">
             
             <!-- Left Column - Image & Tags -->
             <div class="space-y-4">
@@ -351,35 +303,40 @@
 
                   <!-- Contact Actions for NDA systems -->
                   <template v-else-if="activeProject.isWip">
-                    <a href="#connect" @click="closeProject"
+                    <a href="#connect"
                        class="inline-flex items-center gap-1 rounded-md 
                               border border-fuchsia-400/20 bg-fuchsia-500/10 
                               px-3.5 py-1.5 text-[10px] font-bold font-techno uppercase tracking-wider text-fuchsia-300 
-                              hover:bg-fuchsia-500/20 active:scale-95">
+                              hover:bg-fuchsia-500/20 active:scale-95"
+                       @click="goToContact">
                       <span>Minta Akses Awal</span>
                     </a>
                   </template>
                   <template v-else>
-                    <a href="#connect" @click="closeProject"
+                    <a href="#connect"
                        class="inline-flex items-center gap-1 rounded-md 
                               border border-violet-500/20 bg-violet-600/10 
                               px-3.5 py-1.5 text-[10px] font-bold font-techno uppercase tracking-wider text-violet-300 
-                              hover:bg-violet-500/20 active:scale-95">
+                              hover:bg-violet-500/20 active:scale-95"
+                       @click="goToContact">
                       <span>Minta Demo Privat</span>
                     </a>
                   </template>
                 </div>
 
                 <!-- Keyboard Shortcut Hint -->
-                <p class="text-[9px] text-zinc-500 font-sans">
-                  *Tekan <kbd class="rounded border border-white/10 bg-white/5 px-1 py-0.5 text-[8px] font-mono text-zinc-400">ESC</kbd> atau klik area luar untuk menutup panel spesifikasi.
+                <p class="hidden text-[9px] text-zinc-500 font-sans sm:block">
+                  *Tekan <kbd class="rounded border border-white/10 bg-white/5 px-1 py-0.5 text-[8px] font-mono text-zinc-400">ESC</kbd> atau klik area luar untuk menutup detail proyek.
+                </p>
+                <p class="text-[10px] text-zinc-500 font-sans sm:hidden">
+                  Geser ke bawah untuk membaca selengkapnya · ketuk luar modal untuk menutup
                 </p>
               </div>
 
             </div>
-
           </div>
         </div>
+      </div>
       </div>
     </transition>
   </teleport>
@@ -387,6 +344,7 @@
 
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount, watch } from 'vue'
+import { scrollToSection } from '../composables/useSectionScroll.js'
 import scrapingImage from '../public/image_private1.webp'
 import internalImage from '../public/image_private2.webp'
 import reklameImage from '../public/reklame.webp'
@@ -584,13 +542,19 @@ const openProject = (project) => {
   const announcement = document.createElement('div')
   announcement.setAttribute('aria-live', 'polite')
   announcement.classList.add('sr-only')
-  announcement.textContent = `Membuka detail spesifikasi proyek ${project.title}`
+  announcement.textContent = `Membuka detail proyek ${project.title}`
   document.body.appendChild(announcement)
   setTimeout(() => announcement.remove(), 1000)
 }
 
 const closeProject = () => {
   activeProject.value = null
+}
+
+const goToContact = (event) => {
+  event.preventDefault()
+  closeProject()
+  requestAnimationFrame(() => scrollToSection('#connect'))
 }
 
 // ============ KEYBOARD ACCESSIBILITY ============

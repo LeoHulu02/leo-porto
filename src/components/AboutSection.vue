@@ -61,32 +61,6 @@
 
       </div>
 
-      <!-- Quick Connect Call to Action (Minimalist CTA Row) -->
-      <div id="connect" class="flex flex-wrap items-center gap-4 pt-4 border-t border-white/5" data-reveal data-reveal-delay="100">
-        <a href="https://wa.me/6281264351062" 
-           target="_blank" 
-           rel="noopener"
-           aria-label="Hubungi Leo via WhatsApp"
-           class="whatsapp-pulse inline-flex items-center gap-2.5 rounded-full bg-emerald-500/90 
-                  px-6 py-3 text-xs sm:text-sm font-extrabold font-techno text-white 
-                  shadow-lg shadow-emerald-500/20 hover:bg-emerald-400 transition-all 
-                  active:scale-95 touch-manipulation">
-          <span class="h-1.5 w-1.5 rounded-full bg-white animate-ping" aria-hidden="true"></span>
-          <span>WhatsApp Business</span>
-        </a>
-
-        <a href="https://github.com/LeoHulu02" 
-           target="_blank" 
-           rel="noopener"
-           aria-label="Kunjungi profil GitHub Leo"
-           class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 
-                  px-5 py-3 text-xs sm:text-sm font-semibold font-techno text-zinc-300 hover:text-white 
-                  hover:bg-white/10 transition-all active:scale-95 touch-manipulation">
-          <span class="h-1.5 w-1.5 rounded-full bg-zinc-500" aria-hidden="true"></span>
-          <span>Kunjungi GitHub</span>
-        </a>
-      </div>
-
     </div>
   </section>
 </template>
@@ -247,25 +221,6 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-@keyframes whatsapp-pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.45);
-  }
-  70% {
-    transform: scale(1.02);
-    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
-  }
-}
-
-.whatsapp-pulse {
-  animation: whatsapp-pulse 2.8s ease-out infinite;
-}
-
 /* Reveal animations */
 .reveal-init {
   opacity: 0;
