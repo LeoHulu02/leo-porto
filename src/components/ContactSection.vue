@@ -138,14 +138,6 @@
             </div>
 
             <form class="space-y-4 p-5 sm:p-6" @submit.prevent="handleSubmit" novalidate>
-              <div
-                v-if="!isEmailJsConfigured"
-                class="rounded-xl border border-amber-500/25 bg-amber-500/10 px-4 py-3 text-xs leading-relaxed text-amber-100/90 font-sans sm:text-sm"
-                role="status"
-              >
-                Form belum aktif — tambahkan kredensial EmailJS di file <code class="text-amber-200">.env</code>.
-                Sementara itu, gunakan WhatsApp di sebelah kiri.
-              </div>
 
               <div class="grid gap-4 sm:grid-cols-2">
                 <div class="space-y-1.5">
