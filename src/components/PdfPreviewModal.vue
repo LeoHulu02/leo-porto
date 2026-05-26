@@ -10,42 +10,44 @@
     >
       <div
         v-if="activeDocument"
-        class="fixed inset-0 z-[100] flex items-end justify-center bg-black/85 p-0 backdrop-blur-sm sm:items-center sm:p-4"
+        class="pdf-modal-backdrop fixed inset-0 z-[100] flex items-stretch justify-center bg-black/80 p-0 backdrop-blur-md sm:items-center sm:p-3 md:p-4 lg:p-5"
         role="dialog"
         aria-modal="true"
         :aria-label="`Pratinjau ${activeDocument.title}`"
         @click.self="closePdfPreview"
       >
         <div
-          class="flex h-[100dvh] w-full max-w-4xl flex-col overflow-hidden rounded-none border border-white/10 bg-[#08080c] shadow-2xl sm:h-auto sm:max-h-[92dvh] sm:rounded-xl"
+          class="pdf-modal-shell flex h-[100dvh] w-full max-w-full flex-col overflow-hidden border border-white/10 bg-[#08080c] shadow-2xl shadow-violet-500/10 sm:h-[96dvh] sm:max-h-[96dvh] sm:max-w-[min(98vw,720px)] sm:rounded-xl md:max-w-[min(96vw,960px)] md:rounded-2xl lg:max-w-[min(94vw,1140px)] xl:max-w-[min(92vw,1280px)]"
           role="document"
           tabindex="-1"
           ref="modalRef"
         >
-          <!-- Header -->
+          <!-- Header — compact on larger screens -->
           <div
-            class="flex shrink-0 items-start justify-between gap-3 border-b border-white/10 px-4 py-3.5 sm:px-6 sm:py-4"
+            class="flex shrink-0 items-center justify-between gap-3 border-b border-white/10 px-4 py-3 sm:px-5 sm:py-3 md:px-6"
           >
             <div class="min-w-0 flex-1">
-              <div class="mb-1 flex flex-wrap items-center gap-2">
+              <div class="mb-0.5 flex flex-wrap items-center gap-2 md:mb-1">
                 <span
                   class="rounded border border-violet-500/25 bg-violet-500/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-violet-300 font-techno"
                 >
                   PDF
                 </span>
-                <span class="text-[10px] text-zinc-500 font-sans sm:text-xs">Pratinjau dokumen</span>
+                <span class="hidden text-[10px] text-zinc-500 font-sans sm:inline sm:text-xs">
+                  Pratinjau dokumen
+                </span>
               </div>
-              <h2 class="truncate text-base font-bold text-white font-techno sm:text-lg">
+              <h2 class="truncate text-sm font-bold text-white font-techno sm:text-base md:text-lg">
                 {{ activeDocument.title }}
               </h2>
-              <p class="truncate text-xs text-zinc-400 font-sans sm:text-sm">
+              <p class="truncate text-[11px] text-zinc-400 font-sans sm:text-xs md:text-sm">
                 {{ activeDocument.subtitle }}
               </p>
             </div>
 
             <button
               type="button"
-              class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white transition-colors hover:bg-white/10 active:scale-95 touch-manipulation"
+              class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white transition-colors hover:bg-white/10 active:scale-95 touch-manipulation md:h-11 md:w-11"
               aria-label="Tutup pratinjau"
               @click="closePdfPreview"
             >
@@ -63,46 +65,52 @@
             </button>
           </div>
 
-          <!-- Preview -->
-          <div class="relative min-h-0 flex-1 bg-[#050508]">
+          <!-- Preview — takes all remaining space -->
+          <div class="relative min-h-0 flex-1 bg-[#0a0a0f] p-0 sm:p-2 md:p-3">
             <div
-              v-if="isLoading"
-              class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 bg-[#050508]"
+              class="relative h-full overflow-hidden rounded-none border-0 bg-white sm:rounded-lg sm:border sm:border-white/10 md:rounded-xl"
             >
               <div
-                class="h-9 w-9 animate-spin rounded-full border-2 border-violet-500/20 border-t-violet-400"
-                aria-hidden="true"
+                v-if="isLoading"
+                class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 bg-[#050508]"
+              >
+                <div
+                  class="h-9 w-9 animate-spin rounded-full border-2 border-violet-500/20 border-t-violet-400"
+                  aria-hidden="true"
+                />
+                <p class="text-xs text-zinc-400 font-sans">Memuat pratinjau…</p>
+              </div>
+
+              <iframe
+                :key="activeDocument.id"
+                :src="iframeSrc"
+                :title="`Pratinjau ${activeDocument.title}`"
+                class="h-full w-full border-0 bg-white"
+                @load="handleIframeLoad"
               />
-              <p class="text-xs text-zinc-400 font-sans">Memuat pratinjau…</p>
             </div>
 
-            <iframe
-              :key="activeDocument.id"
-              :src="iframeSrc"
-              :title="`Pratinjau ${activeDocument.title}`"
-              class="h-full w-full border-0 bg-white"
-              @load="handleIframeLoad"
-            />
-
             <p
-              class="pointer-events-none absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#050508] via-[#050508]/90 to-transparent px-4 pb-3 pt-8 text-center text-[10px] leading-relaxed text-zinc-500 font-sans sm:hidden"
+              class="pointer-events-none absolute bottom-1 left-0 right-0 bg-gradient-to-t from-[#0a0a0f] via-[#0a0a0f]/90 to-transparent px-4 pb-1 pt-6 text-center text-[10px] leading-relaxed text-zinc-500 font-sans sm:hidden"
             >
               Geser di dalam pratinjau untuk melihat halaman lainnya.
             </p>
           </div>
 
-          <!-- Footer -->
-          <div class="shrink-0 border-t border-white/10 px-4 py-3.5 sm:px-6 sm:py-4">
-            <p class="mb-3 hidden text-xs leading-relaxed text-zinc-400 font-sans sm:block">
-              {{ activeDocument.description }}
-            </p>
-
-            <div class="flex flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between">
-              <p class="text-[11px] leading-relaxed text-zinc-500 font-sans sm:max-w-sm sm:text-xs">
-                Unduh jika ingin menyimpan salinan dokumen ke perangkat Anda.
+          <!-- Footer — slim toolbar -->
+          <div class="shrink-0 border-t border-white/10 px-4 py-3 sm:px-5 sm:py-3 md:px-6">
+            <div class="flex flex-col gap-2.5 md:flex-row md:items-center md:justify-between md:gap-4">
+              <p class="hidden text-xs leading-relaxed text-zinc-400 font-sans lg:block lg:max-w-md">
+                {{ activeDocument.description }}
+              </p>
+              <p class="text-[10px] leading-relaxed text-zinc-500 font-sans sm:text-[11px] lg:hidden">
+                Unduh untuk menyimpan salinan ke perangkat Anda.
+              </p>
+              <p class="hidden text-[11px] text-zinc-500 font-sans lg:block lg:shrink-0">
+                Simpan salinan dokumen ke perangkat Anda.
               </p>
 
-              <div class="flex flex-col gap-2 sm:flex-row sm:justify-end">
+              <div class="flex flex-col gap-2 sm:flex-row sm:justify-end md:shrink-0">
                 <a
                   :href="activeDocument.url"
                   target="_blank"
@@ -169,7 +177,8 @@ const isLoading = ref(true)
 
 const iframeSrc = computed(() => {
   if (!activeDocument.value) return ''
-  return `${activeDocument.value.url}#view=FitH&toolbar=0&navpanes=0`
+  // FitH = lebar penuh iframe; toolbar=1 agar zoom/navigasi halaman tersedia di desktop
+  return `${activeDocument.value.url}#view=FitH&toolbar=1&navpanes=0&scrollbar=1`
 })
 
 const handleIframeLoad = () => {
@@ -208,6 +217,11 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
+.pdf-modal-shell {
+  /* Explicit height chain so flex-1 preview always fills remaining space */
+  min-height: 0;
+}
+
 .touch-manipulation {
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
