@@ -58,6 +58,10 @@ export function buildEmailTemplateParams(form) {
 export function getEmailJsErrorMessage(error) {
   const text = `${error?.text ?? ''} ${error?.message ?? ''}`.toLowerCase()
 
+  if (error?.status === 412 || text.includes('invalid grant') || text.includes('insufficient authentication scopes')) {
+    return 'EmailJS menolak pengiriman karena koneksi email service perlu dihubungkan ulang. Buka EmailJS → Email Services → pilih service → Disconnect lalu Connect lagi, dan izinkan akses kirim email.'
+  }
+
   if (text.includes('service id') || text.includes('service_id')) {
     return 'Service ID tidak valid. Di Vercel, set VITE_EMAILJS_SERVICE_ID ke ID yang diawali service_ (bukan Public Key), lalu redeploy.'
   }

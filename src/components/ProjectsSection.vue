@@ -41,11 +41,11 @@
       </div>
 
       <!-- Single-Card Cinematic Carousel (Desktop, Tablet, Mobile) -->
-      <div class="relative max-w-3xl mx-auto" data-reveal>
+      <div class="relative max-w-4xl mx-auto" data-reveal>
         
         <!-- Main Slider Window -->
-        <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-950 
-                    shadow-2xl shadow-violet-500/5 transition-all duration-300 group h-72 sm:h-96 md:h-[460px]"
+        <div class="group relative h-72 overflow-hidden rounded-[1.75rem] border border-white/10 bg-zinc-950 
+                    shadow-2xl shadow-violet-500/5 ring-1 ring-white/5 transition-all duration-300 sm:h-96 md:h-[480px]"
              @mouseenter="pauseAutoplay"
              @mouseleave="startAutoplay"
              @touchstart="handleTouchStart"
@@ -65,48 +65,74 @@
                 <img
                   :src="currentProject.image"
                   :alt="currentProject.title"
-                  class="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                  class="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.025]"
                   :class="imageLoading[currentProject.id] ? 'opacity-0' : 'opacity-100'"
                   @load="handleImageLoad(currentProject.id)"
                   loading="lazy"
                 />
 
-                <!-- Subtle vignette — keeps image visible, aids title readability -->
-                <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/20" />
+                <!-- Premium vignette: menjaga cover tetap terbaca tanpa menutup detail UI. -->
+                <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/82 via-black/22 to-black/35" />
+                <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(139,92,246,0.22),transparent_34%)]" />
 
-                <!-- Floating Badges (Top-Left) -->
-                <div class="absolute left-4 top-4 flex items-center gap-2 sm:left-6 sm:top-6">
+                <!-- Floating Badges -->
+                <div class="absolute left-4 top-4 flex flex-wrap items-center gap-2 sm:left-6 sm:top-6">
                   <span class="inline-flex items-center rounded-md border border-white/15 
                                bg-black/40 px-3 py-1.5 text-[9px] font-bold font-techno uppercase tracking-wider
                                text-white backdrop-blur-sm">
                     {{ currentProject.privacyLabel }}
                   </span>
-                  <span v-if="currentProject.isWip"
+                  <span class="inline-flex items-center rounded-md border px-3 py-1.5 text-[9px] font-bold font-techno uppercase tracking-wider backdrop-blur-sm"
+                        :class="getStatusClass(currentProject.statusLabel)">
+                    {{ currentProject.statusLabel }}
+                  </span>
+                  <span v-if="currentProject.isWip && currentProject.statusLabel !== 'WIP'"
                         class="inline-flex items-center rounded-md border border-fuchsia-400/30 
                                bg-fuchsia-500/15 px-3 py-1.5 text-[9px] font-bold font-techno uppercase tracking-wider text-fuchsia-200 backdrop-blur-sm">
                     WIP
                   </span>
                 </div>
 
+                <div class="absolute right-4 top-4 hidden rounded-md border border-white/10 bg-black/35 px-3 py-1.5 text-[9px] font-bold uppercase tracking-wider text-zinc-200 backdrop-blur-sm font-techno sm:block sm:right-6 sm:top-6">
+                  {{ currentProject.category }}
+                </div>
+
                 <!-- Always-visible transparent footer: title + detail CTA -->
                 <div class="absolute inset-x-0 bottom-0 z-10 p-4 sm:p-7">
-                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent sm:from-black/70 sm:via-black/10" />
-                  <div class="relative flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
-                    <h3 class="line-clamp-2 min-w-0 text-base font-black leading-snug tracking-tight text-white font-techno sm:text-2xl md:text-[1.65rem]">
-                      {{ currentProject.title }}
-                    </h3>
+                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/54 to-transparent sm:from-black/78 sm:via-black/18" />
+                  <div class="relative flex flex-col gap-4">
+                    <div class="max-w-2xl space-y-2">
+                      <p class="text-[10px] font-bold uppercase tracking-[0.24em] text-violet-200/90 font-techno">
+                        {{ currentProject.category }}
+                      </p>
+                      <h3 class="line-clamp-2 min-w-0 text-base font-black leading-snug tracking-tight text-white font-techno sm:text-2xl md:text-[1.8rem]">
+                        {{ currentProject.title }}
+                      </h3>
+                      <p class="line-clamp-2 max-w-xl text-xs leading-relaxed text-zinc-300 sm:text-sm">
+                        {{ currentProject.subtitle }}
+                      </p>
+                    </div>
 
-                    <button
-                      type="button"
-                      :aria-label="`Lihat detail proyek ${currentProject.title}`"
-                      class="inline-flex min-h-[44px] w-full shrink-0 items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white backdrop-blur-md transition-all hover:border-violet-400/40 hover:bg-violet-600/90 hover:shadow-lg hover:shadow-violet-500/25 active:scale-[0.98] font-techno touch-manipulation sm:w-auto sm:min-w-[148px] sm:text-[11px]"
-                      @click.stop="openProject(currentProject)">
-                      <span>Lihat Detail</span>
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
-                           stroke-width="2.5" stroke="currentColor" class="h-3.5 w-3.5" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                      </svg>
-                    </button>
+                    <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                      <div class="flex flex-wrap gap-1.5">
+                        <span v-for="tag in currentProject.stack.slice(0, 3)" :key="tag"
+                              class="rounded-full border border-white/10 bg-white/[0.08] px-3 py-1 text-[9px] font-bold uppercase tracking-wider text-zinc-200 backdrop-blur-sm font-techno">
+                          {{ tag }}
+                        </span>
+                      </div>
+
+                      <button
+                        type="button"
+                        :aria-label="`Lihat detail proyek ${currentProject.title}`"
+                        class="inline-flex min-h-[44px] w-full shrink-0 items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white backdrop-blur-md transition-all hover:border-violet-400/40 hover:bg-violet-600/90 hover:shadow-lg hover:shadow-violet-500/25 active:scale-[0.98] font-techno touch-manipulation sm:w-auto sm:min-w-[148px] sm:text-[11px]"
+                        @click.stop="openProject(currentProject)">
+                        <span>Lihat Detail</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
+                             stroke-width="2.5" stroke="currentColor" class="h-3.5 w-3.5" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -148,8 +174,11 @@
       </div>
 
       <!-- Slide dots indicator -->
-      <div class="mt-6 space-y-2" data-reveal>
-        <div class="flex items-center justify-center gap-2.5">
+      <div class="mt-6 space-y-3" data-reveal>
+        <div class="flex items-center justify-center gap-3">
+          <span class="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[10px] font-bold text-zinc-400 font-techno">
+            {{ currentIndex + 1 }} / {{ filteredProjects.length }}
+          </span>
           <button v-for="(project, index) in filteredProjects"
                   :key="project.id"
                   @click="goToSlide(index)"
@@ -203,7 +232,14 @@
                 <span class="rounded border border-violet-500/25 bg-violet-500/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-violet-300 font-techno">
                   {{ activeProject.privacyLabel }}
                 </span>
-                <span v-if="activeProject.isWip" class="rounded border border-fuchsia-400/25 bg-fuchsia-500/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-fuchsia-300 font-techno">
+                <span class="rounded border px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider font-techno"
+                      :class="getStatusClass(activeProject.statusLabel)">
+                  {{ activeProject.statusLabel }}
+                </span>
+                <span class="rounded border border-white/10 bg-white/[0.04] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-zinc-400 font-techno">
+                  {{ activeProject.category }}
+                </span>
+                <span v-if="activeProject.isWip && activeProject.statusLabel !== 'WIP'" class="rounded border border-fuchsia-400/25 bg-fuchsia-500/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-fuchsia-300 font-techno">
                   WIP
                 </span>
               </div>
@@ -234,9 +270,19 @@
             
             <!-- Left Column - Image & Tags -->
             <div class="space-y-4">
-              <img :src="activeProject.image"
-                   :alt="`Preview ${activeProject.title}`"
-                   class="h-48 w-full rounded-xl object-cover object-top sm:h-56 shadow-lg border border-white/5" />
+              <figure class="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] shadow-lg shadow-black/30">
+                <img :src="activeProject.image"
+                     :alt="`Preview ${activeProject.title}`"
+                     class="h-48 w-full object-cover object-center sm:h-56" />
+                <figcaption class="flex items-center justify-between gap-3 border-t border-white/10 px-3 py-2">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-400 font-techno">
+                    Project Preview
+                  </span>
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-violet-300 font-techno">
+                    {{ activeProject.statusLabel }}
+                  </span>
+                </figcaption>
+              </figure>
 
               <div class="flex flex-wrap gap-1.5">
                 <span v-for="tag in activeProject.stack" :key="tag"
@@ -278,7 +324,7 @@
                     {{ activeProject.role }}
                   </span>
 
-                  <template v-if="activeProject.isPublic">
+                  <template v-if="activeProject.links?.demo">
                     <a :href="activeProject.links.demo" 
                        target="_blank" 
                        rel="noopener"
@@ -289,6 +335,9 @@
                               active:scale-95">
                       <span>Demo</span>
                     </a>
+                  </template>
+
+                  <template v-if="activeProject.links?.github">
                     <a :href="activeProject.links.github" 
                        target="_blank" 
                        rel="noopener"
@@ -302,7 +351,7 @@
                   </template>
 
                   <!-- Contact Actions for NDA systems -->
-                  <template v-else-if="activeProject.isWip">
+                  <template v-if="!activeProject.links?.demo && !activeProject.links?.github && activeProject.isWip">
                     <a href="#connect"
                        class="inline-flex items-center gap-1 rounded-md 
                               border border-fuchsia-400/20 bg-fuchsia-500/10 
@@ -312,7 +361,7 @@
                       <span>Minta Akses Awal</span>
                     </a>
                   </template>
-                  <template v-else>
+                  <template v-else-if="!activeProject.links?.demo && !activeProject.links?.github">
                     <a href="#connect"
                        class="inline-flex items-center gap-1 rounded-md 
                               border border-violet-500/20 bg-violet-600/10 
@@ -348,6 +397,8 @@ import { scrollToSection } from '../composables/useSectionScroll.js'
 import scrapingImage from '../public/image_private1.webp'
 import internalImage from '../public/image_private2.webp'
 import reklameImage from '../public/reklame.webp'
+import hearingCareImage from '../public/hearing_care.png'
+import sanuImage from '../public/sistem_pakar.png'
 
 // ============ DATA PORTOFOLIO ============
 const projects = [
@@ -365,6 +416,8 @@ const projects = [
     role: 'Full-stack · Solo',
     stack: ['Node.js', 'Vue 3', 'Tailwind CSS', 'Cloudflare'],
     image: scrapingImage,
+    category: 'Data Platform',
+    statusLabel: 'WIP',
     isPublic: false,
     isWip: true,
     privacyLabel: 'Privat'
@@ -383,6 +436,8 @@ const projects = [
     role: 'Front-end · Team',
     stack: ['Vue 3', 'Tailwind CSS', 'Vite', 'Pinia'],
     image: internalImage,
+    category: 'Internal Tool',
+    statusLabel: 'Privat',
     isPublic: false,
     isWip: false,
     privacyLabel: 'Privat'
@@ -401,12 +456,61 @@ const projects = [
     role: 'Full-stack · Solo',
     stack: ['Next.js', 'Tailwind CSS', 'SEO Engine'],
     image: reklameImage,
+    category: 'Landing Page',
+    statusLabel: 'Live',
     isPublic: true,
     isWip: false,
     privacyLabel: 'Publik',
     links: {
       demo: 'http://reklame-sukaria-makmur.vercel.app/',
       github: 'https://github.com/LeoHulu02/reklame'
+    }
+  },
+  {
+    id: 'sanu-expert-system',
+    title: 'Sanu — Sistem Pakar Analisis Minat Belajar',
+    subtitle: 'Dashboard sistem pakar berbasis Forward Chaining + ID3',
+    description: 'Aplikasi dashboard admin untuk menganalisis minat belajar siswa dengan kombinasi rule-based inference, ID3 decision tree, Supabase Auth, dan laporan konsultasi.',
+    highlights: [
+      'Menyatukan manajemen siswa, gejala, rules, dataset training, konsultasi, dan laporan dalam satu dashboard.',
+      'Menggabungkan hasil Forward Chaining dan ID3 untuk perbandingan diagnosa yang lebih transparan.',
+      'Sudah deploy di Vercel dengan Supabase sebagai auth dan database PostgreSQL.'
+    ],
+    metrics: ['FORWARD CHAINING', 'ID3 DECISION TREE', 'SUPABASE AUTH'],
+    role: 'Full-stack · Solo',
+    stack: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'Supabase'],
+    image: sanuImage,
+    category: 'Expert System',
+    statusLabel: 'Live',
+    isPublic: true,
+    isWip: false,
+    privacyLabel: 'Publik',
+    links: {
+      demo: 'https://sistem-pakar-analisis-minat-belajar.vercel.app/',
+      github: 'https://github.com/LeoHulu02/sistem-pakar-analisis-minat-belajar'
+    }
+  },
+  {
+    id: 'hearing-care-management',
+    title: 'Hearing Care Management System',
+    subtitle: 'Sistem manajemen klinik hearing care berbasis Laravel',
+    description: 'Aplikasi manajemen operasional hearing care untuk mengelola data klinik, alur layanan, dan administrasi berbasis Laravel dengan struktur backend konvensional.',
+    highlights: [
+      'Dibangun dengan Laravel, Blade, PHP, dan struktur MVC yang familiar untuk sistem operasional.',
+      'Repo publik tersedia sebagai bukti implementasi, sementara deployment belum disiapkan.',
+      'Cocok diposisikan sebagai sistem administrasi healthcare dengan fokus maintainability.'
+    ],
+    metrics: ['LARAVEL MVC', 'BLADE UI', 'GITHUB PUBLIC'],
+    role: 'Full-stack · Solo',
+    stack: ['Laravel', 'PHP', 'Blade', 'MySQL'],
+    image: hearingCareImage,
+    category: 'Healthcare System',
+    statusLabel: 'Belum Deploy',
+    isPublic: true,
+    isWip: false,
+    privacyLabel: 'Publik',
+    links: {
+      github: 'https://github.com/LeoHulu02/hearing-care-management-system'
     }
   }
 ]
@@ -436,6 +540,17 @@ const getCount = (filterValue) => {
   if (filterValue === 'private') return projects.filter(p => !p.isPublic).length
   if (filterValue === 'wip') return projects.filter(p => p.isWip).length
   return 0
+}
+
+const getStatusClass = (status) => {
+  const styles = {
+    Live: 'border-emerald-400/25 bg-emerald-500/10 text-emerald-300',
+    WIP: 'border-fuchsia-400/25 bg-fuchsia-500/10 text-fuchsia-300',
+    Privat: 'border-violet-400/25 bg-violet-500/10 text-violet-300',
+    'Belum Deploy': 'border-amber-400/25 bg-amber-500/10 text-amber-300',
+  }
+
+  return styles[status] || 'border-white/10 bg-white/[0.04] text-zinc-300'
 }
 
 const currentProject = computed(() => {
