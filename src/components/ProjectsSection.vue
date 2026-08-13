@@ -1,5 +1,5 @@
 <template>
-  <section id="projects" class="relative w-full bg-[#08080c] text-white 
+  <section id="projects" class="relative w-full bg-[#E8EBF1] dark:bg-[#08080c] text-zinc-900 dark:text-white 
                                  py-16 sm:py-20 md:py-24 lg:py-28 overflow-hidden border-b border-violet-500/10">
     
     <!-- Background futuristic lights -->
@@ -14,13 +14,13 @@
       <!-- Header Section -->
       <div class="mb-10 text-center space-y-4" data-reveal>
         <p class="text-[10px] sm:text-xs font-semibold tracking-[0.3em] 
-                  text-violet-400 uppercase font-techno">
+                  text-violet-600 dark:text-violet-400 uppercase font-techno">
           02 · PROYEK
         </p>
         <h2 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight font-techno">
-          Kurasi Solusi Rekayasa & <span class="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-violet-300 bg-clip-text text-transparent">Produk Digital</span>
+          Kurasi Solusi Rekayasa & <span class="bg-gradient-to-r from-violet-600 via-fuchsia-500 to-violet-700 dark:from-violet-400 dark:via-fuchsia-400 dark:to-violet-300 bg-clip-text text-transparent">Produk Digital</span>
         </h2>
-        <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed max-w-xl mx-auto font-sans">
+        <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-xl mx-auto font-sans">
           Mencakup kontribusi proyek open-source publik hingga sistem internal bisnis di bawah jaminan kerahasiaan data klien (NDA).
         </p>
       </div>
@@ -34,7 +34,7 @@
                   'px-4 py-2 rounded-lg text-[10px] sm:text-xs font-bold font-techno transition-all uppercase tracking-wider active:scale-95 duration-200',
                   activeFilter === filter.value
                     ? 'bg-violet-600 text-white shadow-lg shadow-violet-500/20 border border-violet-500'
-                    : 'bg-white/[0.03] text-zinc-400 hover:bg-white/[0.08] hover:text-zinc-200 border border-white/5'
+                    : 'bg-zinc-900/5 text-zinc-600 border border-zinc-900/8 dark:bg-white/[0.03] dark:text-zinc-400 dark:border-white/5 hover:bg-zinc-900/10 hover:text-zinc-800 dark:hover:bg-white/[0.08] dark:hover:text-zinc-200'
                 ]">
           {{ filter.label }} <span class="text-[9px] opacity-60 ml-1">({{ getCount(filter.value) }})</span>
         </button>
@@ -44,8 +44,8 @@
       <div class="relative max-w-4xl mx-auto" data-reveal>
         
         <!-- Main Slider Window -->
-        <div class="group relative h-72 overflow-hidden rounded-[1.75rem] border border-white/10 bg-zinc-950 
-                    shadow-2xl shadow-violet-500/5 ring-1 ring-white/5 transition-all duration-300 sm:h-96 md:h-[480px]"
+        <div class="group relative h-72 overflow-hidden rounded-[1.75rem] border border-zinc-900/10 bg-zinc-200 dark:border-white/10 dark:bg-zinc-950 
+                    shadow-2xl shadow-violet-500/5 ring-1 ring-zinc-900/5 dark:ring-white/5 transition-all duration-300 sm:h-96 md:h-[480px]"
              @mouseenter="pauseAutoplay"
              @mouseleave="startAutoplay"
              @touchstart="handleTouchStart"
@@ -72,7 +72,7 @@
                 />
 
                 <!-- Premium vignette: menjaga cover tetap terbaca tanpa menutup detail UI. -->
-                <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/82 via-black/22 to-black/35" />
+                <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-zinc-900/70 via-zinc-900/20 to-zinc-900/30 dark:from-black/82 dark:via-black/22 dark:to-black/35" />
                 <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(139,92,246,0.22),transparent_34%)]" />
 
                 <!-- Floating Badges -->
@@ -99,7 +99,7 @@
 
                 <!-- Always-visible transparent footer: title + detail CTA -->
                 <div class="absolute inset-x-0 bottom-0 z-10 p-4 sm:p-7">
-                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/54 to-transparent sm:from-black/78 sm:via-black/18" />
+                  <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-zinc-900/85 via-zinc-900/50 to-transparent dark:from-black/90 dark:via-black/54 sm:from-zinc-900/75 sm:via-zinc-900/15 dark:sm:from-black/78 dark:sm:via-black/18" />
                   <div class="relative flex flex-col gap-4">
                     <div class="max-w-2xl space-y-2">
                       <p class="text-[10px] font-bold uppercase tracking-[0.24em] text-violet-200/90 font-techno">
@@ -148,8 +148,8 @@
           aria-label="Slide sebelumnya"
           class="absolute -left-4 sm:-left-6 top-1/2 -translate-y-1/2 z-20
                  hidden sm:flex h-11 w-11 items-center justify-center rounded-lg 
-                 border border-white/10 bg-black/40 text-white backdrop-blur-md 
-                 transition-all hover:bg-violet-600 hover:border-violet-500 active:scale-90"
+                 border border-zinc-900/10 bg-white/80 text-zinc-900 dark:border-white/10 dark:bg-black/40 dark:text-white backdrop-blur-md 
+                 transition-all hover:bg-violet-600 hover:border-violet-500 hover:text-white active:scale-90"
           @click="prevSlide">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
                stroke-width="2.5" stroke="currentColor" class="h-5 w-5" aria-hidden="true">
@@ -162,8 +162,8 @@
           aria-label="Slide berikutnya"
           class="absolute -right-4 sm:-right-6 top-1/2 -translate-y-1/2 z-20
                  hidden sm:flex h-11 w-11 items-center justify-center rounded-lg 
-                 border border-white/10 bg-black/40 text-white backdrop-blur-md 
-                 transition-all hover:bg-violet-600 hover:border-violet-500 active:scale-90"
+                 border border-zinc-900/10 bg-white/80 text-zinc-900 dark:border-white/10 dark:bg-black/40 dark:text-white backdrop-blur-md 
+                 transition-all hover:bg-violet-600 hover:border-violet-500 hover:text-white active:scale-90"
           @click="nextSlide">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
                stroke-width="2.5" stroke="currentColor" class="h-5 w-5" aria-hidden="true">
@@ -176,7 +176,7 @@
       <!-- Slide dots indicator -->
       <div class="mt-6 space-y-3" data-reveal>
         <div class="flex items-center justify-center gap-3">
-          <span class="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[10px] font-bold text-zinc-400 font-techno">
+          <span class="rounded-full border border-zinc-900/10 bg-white/70 dark:border-white/10 dark:bg-white/[0.04] px-3 py-1 text-[10px] font-bold text-zinc-600 dark:text-zinc-400 font-techno">
             {{ currentIndex + 1 }} / {{ filteredProjects.length }}
           </span>
           <button v-for="(project, index) in filteredProjects"
@@ -186,17 +186,17 @@
                   class="h-2.5 rounded-full transition-all duration-300 focus:outline-none touch-manipulation"
                   :class="index === currentIndex 
                     ? 'w-7 bg-violet-500' 
-                    : 'w-2.5 bg-white/20 hover:bg-white/40'">
+                    : 'w-2.5 bg-zinc-900/20 hover:bg-zinc-900/40 dark:bg-white/20 dark:hover:bg-white/40'">
           </button>
         </div>
-        <p class="text-center text-[10px] text-zinc-500 font-sans sm:hidden">
+        <p class="text-center text-[10px] text-zinc-600 dark:text-zinc-500 font-sans sm:hidden">
           Geser kiri/kanan pada card untuk melihat proyek lain
         </p>
       </div>
 
       <!-- Footer NDA Disclaimer -->
       <div class="mt-12 text-center" data-reveal>
-        <p class="text-[11px] text-zinc-500 italic max-w-xl mx-auto font-sans leading-relaxed">
+        <p class="text-[11px] text-zinc-600 dark:text-zinc-500 italic max-w-xl mx-auto font-sans leading-relaxed">
           *Catatan Kerahasiaan Data (NDA): Beberapa sistem manajemen dirancang eksklusif untuk kepentingan internal korporat. Saya hanya menyajikan screenshot antarmuka, ringkasan arsitektur, dan metrik hasil tanpa membagikan repositori source code publik.
         </p>
       </div>
@@ -214,47 +214,47 @@
       leave-from-class="opacity-100"
       leave-to-class="opacity-0">
       <div v-if="activeProject"
-           class="fixed inset-0 z-[100] flex items-end justify-center bg-black/60 p-0 backdrop-blur-md sm:items-center sm:p-4"
+           class="fixed inset-0 z-[100] flex items-end justify-center bg-zinc-900/50 dark:bg-black/60 p-0 backdrop-blur-md sm:items-center sm:p-4"
            role="dialog"
            aria-modal="true"
            :aria-label="`Detail Proyek ${activeProject.title}`"
            @click.self="closeProject">
         
         <!-- Modal Content Container -->
-        <div class="flex max-h-[92dvh] w-full max-w-2xl flex-col overflow-hidden rounded-t-2xl border border-white/10 
-                    bg-[#08080c] shadow-2xl shadow-violet-500/10 sm:rounded-2xl"
+        <div class="flex max-h-[92dvh] w-full max-w-2xl flex-col overflow-hidden rounded-t-2xl border border-zinc-900/10 dark:border-white/10 
+                    bg-white dark:bg-[#08080c] shadow-2xl shadow-violet-500/10 sm:rounded-2xl"
              role="document">
           
           <!-- Modal Header -->
-          <div class="flex shrink-0 items-start justify-between gap-4 border-b border-white/10 px-4 py-4 sm:px-6">
+          <div class="flex shrink-0 items-start justify-between gap-4 border-b border-zinc-900/10 dark:border-white/10 px-4 py-4 sm:px-6">
             <div class="min-w-0 flex-1">
               <div class="mb-1.5 flex flex-wrap items-center gap-2">
-                <span class="rounded border border-violet-500/25 bg-violet-500/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-violet-300 font-techno">
+                <span class="rounded border border-violet-500/25 bg-violet-500/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-violet-700 dark:text-violet-300 font-techno">
                   {{ activeProject.privacyLabel }}
                 </span>
                 <span class="rounded border px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider font-techno"
                       :class="getStatusClass(activeProject.statusLabel)">
                   {{ activeProject.statusLabel }}
                 </span>
-                <span class="rounded border border-white/10 bg-white/[0.04] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-zinc-400 font-techno">
+                <span class="rounded border border-zinc-900/10 bg-white/70 dark:border-white/10 dark:bg-white/[0.04] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 font-techno">
                   {{ activeProject.category }}
                 </span>
-                <span v-if="activeProject.isWip && activeProject.statusLabel !== 'WIP'" class="rounded border border-fuchsia-400/25 bg-fuchsia-500/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-fuchsia-300 font-techno">
+                <span v-if="activeProject.isWip && activeProject.statusLabel !== 'WIP'" class="rounded border border-fuchsia-400/25 bg-fuchsia-500/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-fuchsia-700 dark:text-fuchsia-300 font-techno">
                   WIP
                 </span>
               </div>
-              <h3 class="text-base font-bold leading-snug text-white font-techno sm:text-lg">
+              <h3 class="text-base font-bold leading-snug text-zinc-900 dark:text-white font-techno sm:text-lg">
                 {{ activeProject.title }}
               </h3>
-              <p class="mt-0.5 text-xs leading-relaxed text-zinc-400 font-sans sm:text-sm">
+              <p class="mt-0.5 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400 font-sans sm:text-sm">
                 {{ activeProject.subtitle }}
               </p>
             </div>
             <button
               type="button"
               class="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center 
-                     rounded-lg border border-white/10 bg-white/5 text-white 
-                     transition-colors hover:bg-white/10 active:scale-95 touch-manipulation"
+                     rounded-lg border border-zinc-900/10 bg-zinc-900/5 text-zinc-900 dark:border-white/10 dark:bg-white/5 dark:text-white 
+                     transition-colors hover:bg-zinc-900/10 dark:hover:bg-white/10 active:scale-95 touch-manipulation"
               aria-label="Tutup dialog"
               @click="closeProject">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
@@ -270,15 +270,15 @@
             
             <!-- Left Column - Image & Tags -->
             <div class="space-y-4">
-              <figure class="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] shadow-lg shadow-black/30">
+              <figure class="overflow-hidden rounded-2xl border border-zinc-900/10 bg-white/70 dark:border-white/10 dark:bg-white/[0.03] shadow-lg shadow-black/30">
                 <img :src="activeProject.image"
                      :alt="`Preview ${activeProject.title}`"
                      class="h-48 w-full object-cover object-center sm:h-56" />
-                <figcaption class="flex items-center justify-between gap-3 border-t border-white/10 px-3 py-2">
-                  <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-400 font-techno">
+                <figcaption class="flex items-center justify-between gap-3 border-t border-zinc-900/10 dark:border-white/10 px-3 py-2">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 font-techno">
                     Project Preview
                   </span>
-                  <span class="text-[10px] font-bold uppercase tracking-wider text-violet-300 font-techno">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-violet-700 dark:text-violet-300 font-techno">
                     {{ activeProject.statusLabel }}
                   </span>
                 </figcaption>
@@ -286,7 +286,7 @@
 
               <div class="flex flex-wrap gap-1.5">
                 <span v-for="tag in activeProject.stack" :key="tag"
-                      class="rounded bg-white/[0.04] px-2.5 py-1 text-[10px] font-bold font-techno text-zinc-400">
+                      class="rounded bg-zinc-900/5 dark:bg-white/[0.04] px-2.5 py-1 text-[10px] font-bold font-techno text-zinc-600 dark:text-zinc-400">
                   {{ tag }}
                 </span>
               </div>
@@ -294,7 +294,7 @@
               <div v-if="activeProject.metrics?.length" class="flex flex-wrap gap-1.5">
                 <span v-for="metric in activeProject.metrics" :key="metric"
                       class="rounded border border-violet-400/20 bg-violet-500/5 
-                             px-2.5 py-1 text-[10px] font-bold font-techno text-violet-300 uppercase tracking-wider">
+                             px-2.5 py-1 text-[10px] font-bold font-techno text-violet-700 dark:text-violet-300 uppercase tracking-wider">
                   {{ metric }}
                 </span>
               </div>
@@ -303,24 +303,24 @@
             <!-- Right Column - Specifications -->
             <div class="space-y-4 flex flex-col justify-between">
               <div class="space-y-3">
-                <p class="text-xs leading-relaxed text-zinc-300 sm:text-sm font-sans">
+                <p class="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300 sm:text-sm font-sans">
                   {{ activeProject.description }}
                 </p>
 
-                <ul class="space-y-2 text-xs text-zinc-400 font-sans">
+                <ul class="space-y-2 text-xs text-zinc-600 dark:text-zinc-400 font-sans">
                   <li v-for="(item, index) in activeProject.highlights" :key="index" 
                       class="flex gap-2.5">
-                    <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-violet-400" aria-hidden="true"></span>
+                    <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-violet-600 dark:bg-violet-400" aria-hidden="true"></span>
                     <span class="leading-relaxed">{{ item }}</span>
                   </li>
                 </ul>
               </div>
 
               <!-- Action Links inside Modal -->
-              <div class="pt-4 border-t border-white/5 space-y-3">
+              <div class="pt-4 border-t border-zinc-900/8 dark:border-white/5 space-y-3">
                 <div class="flex flex-wrap items-center gap-2">
                   <span class="rounded bg-violet-500/10 border border-violet-500/20 
-                               px-3 py-1.5 text-[9px] font-bold font-techno uppercase tracking-wider text-violet-300">
+                               px-3 py-1.5 text-[9px] font-bold font-techno uppercase tracking-wider text-violet-700 dark:text-violet-300">
                     {{ activeProject.role }}
                   </span>
 
@@ -329,8 +329,8 @@
                        target="_blank" 
                        rel="noopener"
                        :aria-label="`Demo proyek ${activeProject.title}`"
-                       class="inline-flex items-center gap-1 rounded-md bg-white 
-                              px-3.5 py-1.5 text-[10px] font-bold font-techno uppercase tracking-wider text-black 
+                       class="inline-flex items-center gap-1 rounded-md bg-zinc-900 dark:bg-white 
+                              px-3.5 py-1.5 text-[10px] font-bold font-techno uppercase tracking-wider text-white dark:text-black 
                               transition-colors hover:bg-violet-600 hover:text-white 
                               active:scale-95">
                       <span>Demo</span>
@@ -343,9 +343,9 @@
                        rel="noopener"
                        :aria-label="`Source code proyek ${activeProject.title}`"
                        class="inline-flex items-center gap-1 rounded-md 
-                              border border-white/10 bg-white/5 px-3.5 py-1.5 
-                              text-[10px] font-bold font-techno uppercase tracking-wider text-zinc-200 
-                              transition-colors hover:bg-white/10 active:scale-95">
+                              border border-zinc-900/10 bg-zinc-900/5 dark:border-white/10 dark:bg-white/5 px-3.5 py-1.5 
+                              text-[10px] font-bold font-techno uppercase tracking-wider text-zinc-700 dark:text-zinc-200 
+                              transition-colors hover:bg-zinc-900/10 dark:hover:bg-white/10 active:scale-95">
                       <span>GitHub</span>
                     </a>
                   </template>
@@ -355,7 +355,7 @@
                     <a href="#connect"
                        class="inline-flex items-center gap-1 rounded-md 
                               border border-fuchsia-400/20 bg-fuchsia-500/10 
-                              px-3.5 py-1.5 text-[10px] font-bold font-techno uppercase tracking-wider text-fuchsia-300 
+                              px-3.5 py-1.5 text-[10px] font-bold font-techno uppercase tracking-wider text-fuchsia-700 dark:text-fuchsia-300 
                               hover:bg-fuchsia-500/20 active:scale-95"
                        @click="goToContact">
                       <span>Minta Akses Awal</span>
@@ -365,7 +365,7 @@
                     <a href="#connect"
                        class="inline-flex items-center gap-1 rounded-md 
                               border border-violet-500/20 bg-violet-600/10 
-                              px-3.5 py-1.5 text-[10px] font-bold font-techno uppercase tracking-wider text-violet-300 
+                              px-3.5 py-1.5 text-[10px] font-bold font-techno uppercase tracking-wider text-violet-700 dark:text-violet-300 
                               hover:bg-violet-500/20 active:scale-95"
                        @click="goToContact">
                       <span>Minta Demo Privat</span>
@@ -374,10 +374,10 @@
                 </div>
 
                 <!-- Keyboard Shortcut Hint -->
-                <p class="hidden text-[9px] text-zinc-500 font-sans sm:block">
-                  *Tekan <kbd class="rounded border border-white/10 bg-white/5 px-1 py-0.5 text-[8px] font-mono text-zinc-400">ESC</kbd> atau klik area luar untuk menutup detail proyek.
+                <p class="hidden text-[9px] text-zinc-600 dark:text-zinc-500 font-sans sm:block">
+                  *Tekan <kbd class="rounded border border-zinc-900/10 bg-zinc-900/5 dark:border-white/10 dark:bg-white/5 px-1 py-0.5 text-[8px] font-mono text-zinc-600 dark:text-zinc-400">ESC</kbd> atau klik area luar untuk menutup detail proyek.
                 </p>
-                <p class="text-[10px] text-zinc-500 font-sans sm:hidden">
+                <p class="text-[10px] text-zinc-600 dark:text-zinc-500 font-sans sm:hidden">
                   Geser ke bawah untuk membaca selengkapnya · ketuk luar modal untuk menutup
                 </p>
               </div>
@@ -544,13 +544,13 @@ const getCount = (filterValue) => {
 
 const getStatusClass = (status) => {
   const styles = {
-    Live: 'border-emerald-400/25 bg-emerald-500/10 text-emerald-300',
-    WIP: 'border-fuchsia-400/25 bg-fuchsia-500/10 text-fuchsia-300',
-    Privat: 'border-violet-400/25 bg-violet-500/10 text-violet-300',
-    'Belum Deploy': 'border-amber-400/25 bg-amber-500/10 text-amber-300',
+    Live: 'border-emerald-500/30 bg-emerald-500/15 text-emerald-700 dark:border-emerald-400/25 dark:bg-emerald-500/10 dark:text-emerald-300',
+    WIP: 'border-fuchsia-500/30 bg-fuchsia-500/15 text-fuchsia-700 dark:border-fuchsia-400/25 dark:bg-fuchsia-500/10 dark:text-fuchsia-300',
+    Privat: 'border-violet-500/30 bg-violet-500/15 text-violet-700 dark:border-violet-400/25 dark:bg-violet-500/10 dark:text-violet-300',
+    'Belum Deploy': 'border-amber-500/30 bg-amber-500/15 text-amber-800 dark:border-amber-400/25 dark:bg-amber-500/10 dark:text-amber-300',
   }
 
-  return styles[status] || 'border-white/10 bg-white/[0.04] text-zinc-300'
+  return styles[status] || 'border-zinc-900/10 bg-zinc-900/5 text-zinc-700 dark:border-white/10 dark:bg-white/[0.04] dark:text-zinc-300'
 }
 
 const currentProject = computed(() => {

@@ -1,20 +1,20 @@
 <template>
   <section
     id="home"
-    class="relative flex min-h-[100dvh] w-full flex-col justify-center overflow-x-hidden bg-[#030308] pb-20 pt-24 text-white selection:bg-violet-500/30 xs:pt-28 sm:pb-24 sm:pt-32 lg:pb-24 lg:pt-16"
+    class="relative flex min-h-[100dvh] w-full flex-col justify-center overflow-x-hidden bg-[#F4F5F8] dark:bg-[#030308] pb-20 pt-24 text-zinc-900 dark:text-white selection:bg-violet-500/25 dark:selection:bg-violet-500/30 xs:pt-28 sm:pb-24 sm:pt-32 lg:pb-24 lg:pt-16"
   >
     <div class="pointer-events-none absolute inset-0 z-0">
       <div
-        class="absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_50%_38%,rgba(76,29,149,0.14),transparent_58%)]"
+        class="absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_50%_38%,rgba(124,58,237,0.08),transparent_58%)] dark:bg-[radial-gradient(ellipse_90%_60%_at_50%_38%,rgba(76,29,149,0.14),transparent_58%)]"
       />
       <div
-        class="absolute inset-0 bg-[radial-gradient(ellipse_60%_45%_at_70%_60%,rgba(139,92,246,0.06),transparent_50%)]"
+        class="absolute inset-0 bg-[radial-gradient(ellipse_60%_45%_at_70%_60%,rgba(124,58,237,0.05),transparent_50%)] dark:bg-[radial-gradient(ellipse_60%_45%_at_70%_60%,rgba(139,92,246,0.06),transparent_50%)]"
       />
     </div>
 
     <!-- HUD corners -->
     <svg
-      class="pointer-events-none absolute left-3 top-20 z-[5] h-14 w-14 text-violet-400/50 motion-safe:animate-hud-pulse motion-reduce:opacity-35 hidden sm:block sm:left-5 sm:top-24 sm:h-[4.5rem] sm:w-[4.5rem]"
+      class="pointer-events-none absolute left-3 top-20 z-[5] h-14 w-14 text-violet-600/40 dark:text-violet-400/50 motion-safe:animate-hud-pulse motion-reduce:opacity-35 hidden sm:block sm:left-5 sm:top-24 sm:h-[4.5rem] sm:w-[4.5rem]"
       viewBox="0 0 72 72"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +27,7 @@
       <circle cx="28" cy="28" r="0.9" fill="currentColor" opacity="0.5" />
     </svg>
     <svg
-      class="pointer-events-none absolute right-3 top-20 z-[5] h-14 w-14 scale-x-[-1] text-violet-400/50 motion-safe:animate-hud-pulse motion-reduce:opacity-35 hidden sm:block sm:right-5 sm:top-24 sm:h-[4.5rem] sm:w-[4.5rem]"
+      class="pointer-events-none absolute right-3 top-20 z-[5] h-14 w-14 scale-x-[-1] text-violet-600/40 dark:text-violet-400/50 motion-safe:animate-hud-pulse motion-reduce:opacity-35 hidden sm:block sm:right-5 sm:top-24 sm:h-[4.5rem] sm:w-[4.5rem]"
       viewBox="0 0 72 72"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +40,7 @@
       <circle cx="28" cy="28" r="0.9" fill="currentColor" opacity="0.5" />
     </svg>
     <svg
-      class="pointer-events-none absolute bottom-28 left-3 z-[5] h-14 w-14 scale-y-[-1] text-violet-400/50 motion-safe:animate-hud-pulse motion-reduce:opacity-35 hidden sm:block sm:bottom-24 sm:left-5 sm:h-[4.5rem] sm:w-[4.5rem]"
+      class="pointer-events-none absolute bottom-28 left-3 z-[5] h-14 w-14 scale-y-[-1] text-violet-600/40 dark:text-violet-400/50 motion-safe:animate-hud-pulse motion-reduce:opacity-35 hidden sm:block sm:bottom-24 sm:left-5 sm:h-[4.5rem] sm:w-[4.5rem]"
       viewBox="0 0 72 72"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +53,7 @@
       <circle cx="28" cy="28" r="0.9" fill="currentColor" opacity="0.5" />
     </svg>
     <svg
-      class="pointer-events-none absolute bottom-28 right-3 z-[5] h-14 w-14 scale-[-1] text-violet-400/50 motion-safe:animate-hud-pulse motion-reduce:opacity-35 hidden sm:block sm:bottom-24 sm:right-5 sm:h-[4.5rem] sm:w-[4.5rem]"
+      class="pointer-events-none absolute bottom-28 right-3 z-[5] h-14 w-14 scale-[-1] text-violet-600/40 dark:text-violet-400/50 motion-safe:animate-hud-pulse motion-reduce:opacity-35 hidden sm:block sm:bottom-24 sm:right-5 sm:h-[4.5rem] sm:w-[4.5rem]"
       viewBox="0 0 72 72"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -83,28 +83,28 @@
               <span class="relative inline-flex h-2 w-2 rounded-full bg-violet-400" />
             </span>
             <span
-              class="text-[10px] font-bold uppercase tracking-[0.35em] text-violet-200/90 sm:text-xs font-techno"
+              class="text-[10px] font-bold uppercase tracking-[0.35em] text-violet-700 dark:text-violet-200/90 sm:text-xs font-techno"
             >
               Saya Leo
             </span>
           </div>
 
           <h1
-            class="max-w-xl text-5xl font-black tracking-tighter text-white sm:text-6xl md:text-7xl lg:text-[4.25rem] xl:text-[5rem] leading-[0.92] font-techno"
+            class="max-w-xl text-5xl font-black tracking-tighter text-zinc-900 dark:text-white sm:text-6xl md:text-7xl lg:text-[4.25rem] xl:text-[5rem] leading-[0.92] font-techno"
           >
             <span
-              class="block bg-gradient-to-br from-white via-white to-white/55 bg-clip-text text-transparent drop-shadow-[0_0_42px_rgba(167,139,250,0.35)] motion-reduce:drop-shadow-none"
+              class="block bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-600 dark:from-white dark:via-white dark:to-white/55 bg-clip-text text-transparent drop-shadow-[0_0_42px_rgba(167,139,250,0.35)] motion-reduce:drop-shadow-none"
             >
               Fullstack
             </span>
             <span
-              class="block bg-gradient-to-br from-violet-200 via-fuchsia-200 to-violet-400/90 bg-clip-text text-transparent drop-shadow-[0_0_48px_rgba(139,92,246,0.45)] motion-reduce:drop-shadow-none"
+              class="block bg-gradient-to-br from-violet-600 via-fuchsia-600 to-violet-500 dark:from-violet-200 dark:via-fuchsia-200 dark:to-violet-400/90 bg-clip-text text-transparent drop-shadow-[0_0_48px_rgba(139,92,246,0.45)] motion-reduce:drop-shadow-none"
             >
               Developer
             </span>
           </h1>
 
-          <p class="max-w-xs text-sm leading-relaxed text-zinc-400 sm:max-w-sm sm:text-base">
+          <p class="max-w-xs text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 sm:max-w-sm sm:text-base">
             Front-end · Back-end · Siap skala produksi
           </p>
         </div>
@@ -133,7 +133,7 @@
                 >
                   <div class="tech-scatter-animate will-change-transform">
                     <div
-                      class="tech-icon-pill flex h-9 w-9 xs:h-10 xs:w-10 items-center justify-center rounded-2xl border bg-gradient-to-b from-zinc-800/95 to-[#07070e]/98 backdrop-blur-md sm:h-11 sm:w-11 md:h-12 md:w-12"
+                      class="tech-icon-pill flex h-9 w-9 xs:h-10 xs:w-10 items-center justify-center rounded-2xl border bg-gradient-to-b from-white to-zinc-100 dark:from-zinc-800/95 dark:to-[#07070e]/98 backdrop-blur-md sm:h-11 sm:w-11 md:h-12 md:w-12"
                       :style="iconPillStyle(item)"
                     >
                       <svg
@@ -189,7 +189,7 @@
               "
             >
               <div
-                class="relative rounded-[15px] bg-[#08080f]/95 px-4 py-4 xs:px-5 xs:py-5 backdrop-blur-md sm:px-6 sm:py-6"
+                class="relative rounded-[15px] bg-white/80 dark:bg-[#08080f]/95 px-4 py-4 xs:px-5 xs:py-5 backdrop-blur-md sm:px-6 sm:py-6"
               >
                 <span
                   class="absolute -left-px -top-px h-4 w-4 border-l border-t border-violet-400/70"
@@ -204,12 +204,12 @@
                   class="absolute -bottom-px -right-px h-4 w-4 border-b border-r border-violet-400/50"
                 />
                 <p
-                  class="text-center text-xs xs:text-sm leading-relaxed text-zinc-300 lg:text-left sm:text-base"
+                  class="text-center text-xs xs:text-sm leading-relaxed text-zinc-700 dark:text-zinc-300 lg:text-left sm:text-base"
                 >
-                  <span class="text-violet-300/90">“</span>Dari
-                  <span class="font-semibold text-white">API</span> hingga
-                  <span class="font-semibold text-white">UI</span>
-                  — full stack yang rapi dan siap skala.<span class="text-violet-300/90">”</span>
+                  <span class="text-violet-700 dark:text-violet-300/90">“</span>Dari
+                  <span class="font-semibold text-zinc-900 dark:text-white">API</span> hingga
+                  <span class="font-semibold text-zinc-900 dark:text-white">UI</span>
+                  — full stack yang rapi dan siap skala.<span class="text-violet-700 dark:text-violet-300/90">”</span>
                 </p>
               </div>
             </div>
@@ -217,7 +217,7 @@
 
           <a
             href="#about"
-            class="group relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-violet-400/50 bg-violet-950/40 px-8 py-3.5 text-sm font-extrabold uppercase tracking-[0.2em] text-violet-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition hover:border-violet-300/70 hover:bg-violet-900/50 hover:shadow-[0_0_28px_rgba(139,92,246,0.35)] active:scale-[0.98] motion-reduce:transition-none sm:px-10 sm:py-4 font-techno"
+            class="group relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-violet-600/40 bg-violet-600/10 text-violet-800 dark:border-violet-400/50 dark:bg-violet-950/40 dark:text-violet-100 px-8 py-3.5 text-sm font-extrabold uppercase tracking-[0.2em] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition hover:border-violet-600/60 hover:bg-violet-600/15 dark:hover:border-violet-300/70 dark:hover:bg-violet-900/50 dark:hover:shadow-[0_0_28px_rgba(139,92,246,0.35)] active:scale-[0.98] motion-reduce:transition-none sm:px-10 sm:py-4 font-techno"
             @click="onAboutClick"
           >
             <span>Tentang Saya</span>
@@ -246,7 +246,7 @@
     </div>
 
     <div
-      class="pointer-events-none w-full border-t border-violet-500/10 bg-gradient-to-t from-[#030308]/90 to-transparent px-4 py-6 mt-12 sm:mt-16 lg:absolute lg:bottom-0 lg:left-0 lg:right-0 lg:z-20 lg:py-4 lg:mt-0"
+      class="pointer-events-none w-full border-t border-violet-500/10 bg-gradient-to-t from-[#F4F5F8]/90 dark:from-[#030308]/90 to-transparent px-4 py-6 mt-12 sm:mt-16 lg:absolute lg:bottom-0 lg:left-0 lg:right-0 lg:z-20 lg:py-4 lg:mt-0"
     >
       <nav
         class="pointer-events-auto mx-auto flex max-w-3xl flex-wrap items-center justify-center gap-x-6 gap-y-3 xs:gap-x-8 sm:gap-x-10"
@@ -254,11 +254,11 @@
       >
         <button
           type="button"
-          class="group flex flex-col items-center gap-1 text-zinc-500 transition hover:text-violet-300 touch-manipulation"
+          class="group flex flex-col items-center gap-1 text-zinc-500 transition hover:text-violet-700 dark:hover:text-violet-300 touch-manipulation"
           @click="openPdfPreview('certificate')"
         >
           <svg
-            class="h-6 w-6 text-zinc-400 transition group-hover:text-violet-400 sm:h-7 sm:w-7"
+            class="h-6 w-6 text-zinc-600 dark:text-zinc-400 transition group-hover:text-violet-600 dark:group-hover:text-violet-400 sm:h-7 sm:w-7"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -289,11 +289,11 @@
 
         <button
           type="button"
-          class="group flex flex-col items-center gap-1 text-zinc-500 transition hover:text-violet-300 touch-manipulation"
+          class="group flex flex-col items-center gap-1 text-zinc-500 transition hover:text-violet-700 dark:hover:text-violet-300 touch-manipulation"
           @click="openPdfPreview('cv')"
         >
           <svg
-            class="h-6 w-6 text-zinc-400 transition group-hover:text-violet-400 sm:h-7 sm:w-7"
+            class="h-6 w-6 text-zinc-600 dark:text-zinc-400 transition group-hover:text-violet-600 dark:group-hover:text-violet-400 sm:h-7 sm:w-7"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -329,10 +329,10 @@
           href="https://github.com/LeoHulu02"
           target="_blank"
           rel="noopener noreferrer"
-          class="group flex flex-col items-center gap-1 text-zinc-500 transition hover:text-violet-300"
+          class="group flex flex-col items-center gap-1 text-zinc-500 transition hover:text-violet-700 dark:hover:text-violet-300"
         >
           <svg
-            class="h-6 w-6 text-zinc-400 transition group-hover:text-violet-400 sm:h-7 sm:w-7"
+            class="h-6 w-6 text-zinc-600 dark:text-zinc-400 transition group-hover:text-violet-600 dark:group-hover:text-violet-400 sm:h-7 sm:w-7"
             role="img"
             viewBox="0 0 24 24"
             aria-hidden="true"
@@ -348,10 +348,10 @@
           href="https://www.linkedin.com/in/leo-saputra-hulu-9449b0331"
           target="_blank"
           rel="noopener noreferrer"
-          class="group flex flex-col items-center gap-1 text-zinc-500 transition hover:text-violet-300"
+          class="group flex flex-col items-center gap-1 text-zinc-500 transition hover:text-violet-700 dark:hover:text-violet-300"
         >
           <svg
-            class="h-6 w-6 text-zinc-400 transition group-hover:text-violet-400 sm:h-7 sm:w-7"
+            class="h-6 w-6 text-zinc-600 dark:text-zinc-400 transition group-hover:text-violet-600 dark:group-hover:text-violet-400 sm:h-7 sm:w-7"
             role="img"
             viewBox="0 0 24 24"
             aria-hidden="true"
@@ -367,10 +367,10 @@
           href="https://www.instagram.com/leo_hulu/"
           target="_blank"
           rel="noopener noreferrer"
-          class="group flex flex-col items-center gap-1 text-zinc-500 transition hover:text-violet-300"
+          class="group flex flex-col items-center gap-1 text-zinc-500 transition hover:text-violet-700 dark:hover:text-violet-300"
         >
           <svg
-            class="h-6 w-6 text-zinc-400 transition group-hover:text-violet-400 sm:h-7 sm:w-7"
+            class="h-6 w-6 text-zinc-600 dark:text-zinc-400 transition group-hover:text-violet-600 dark:group-hover:text-violet-400 sm:h-7 sm:w-7"
             role="img"
             viewBox="0 0 24 24"
             aria-hidden="true"

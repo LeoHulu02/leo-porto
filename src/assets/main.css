@@ -5,6 +5,11 @@
 :root {
   --site-header-offset: 5.5rem;
   --site-scroll-gap: 1.25rem;
+  --page-bg: #f4f5f8;
+}
+
+html.dark {
+  --page-bg: #050505;
 }
 
 html {
@@ -21,5 +26,5 @@ html {
 
 body {
   margin: 0;
-  background-color: #050505;
+  background-color: var(--page-bg);
 }

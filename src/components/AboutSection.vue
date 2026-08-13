@@ -1,5 +1,5 @@
 <template>
-  <section id="about" class="relative w-full bg-[#050508] text-white 
+  <section id="about" class="relative w-full bg-[#EEF0F4] dark:bg-[#050508] text-zinc-900 dark:text-white 
                               py-16 sm:py-20 md:py-24 lg:py-28 overflow-hidden border-b border-violet-500/10">
     
     <!-- Background futuristic lights -->
@@ -14,13 +14,13 @@
       <!-- Top Profile & Value Proposition Header -->
       <div class="space-y-6 mb-12" data-reveal>
         <p class="text-[10px] sm:text-xs font-semibold tracking-[0.3em] 
-                  text-violet-400 uppercase font-techno">
+                  text-violet-600 dark:text-violet-400 uppercase font-techno">
           01 · ABOUT ME / TENTANG SAYA
         </p>
         <h2 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight font-techno">
-          Membangun Sistem Web Skala Tinggi dengan <span class="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-violet-300 bg-clip-text text-transparent">Presisi Arsitektur</span>
+          Membangun Sistem Web Skala Tinggi dengan <span class="bg-gradient-to-r from-violet-600 via-fuchsia-600 to-violet-500 dark:from-violet-400 dark:via-fuchsia-400 dark:to-violet-300 bg-clip-text text-transparent">Presisi Arsitektur</span>
         </h2>
-        <p class="text-sm sm:text-base md:text-lg text-zinc-300 leading-relaxed font-sans">
+        <p class="text-sm sm:text-base md:text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed font-sans">
           Saya menjembatani arsitektur sistem backend yang tangguh dengan antarmuka frontend premium. Berfokus penuh pada kecepatan, skalabilitas, dan penyelesaian masalah bisnis secara pragmatis.
         </p>
       </div>
@@ -30,8 +30,8 @@
         
         <div class="space-y-4">
           <div class="flex items-center gap-2">
-            <span class="h-2 w-2 rounded-full bg-violet-400 animate-pulse"></span>
-            <h3 class="text-xs sm:text-sm font-bold tracking-[0.2em] text-violet-300 uppercase font-techno">
+            <span class="h-2 w-2 rounded-full bg-violet-600 dark:bg-violet-400 animate-pulse"></span>
+            <h3 class="text-xs sm:text-sm font-bold tracking-[0.2em] text-violet-700 dark:text-violet-300 uppercase font-techno">
               TECH STACK / SENJATA PENGEMBANGAN
             </h3>
           </div>
@@ -39,19 +39,19 @@
           <!-- Grid of Custom Icon Tags -->
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
             <div v-for="tech in techStack" :key="tech.name"
-                 class="group flex items-center gap-3 px-4 py-3 rounded-2xl border border-white/5 
-                        bg-white/[0.01] backdrop-blur-md transition-all duration-300
+                 class="group flex items-center gap-3 px-4 py-3 rounded-2xl border border-zinc-900/8 
+                        bg-white/70 dark:bg-white/[0.01] dark:border-white/5 backdrop-blur-md transition-all duration-300
                         hover:-translate-y-1 hover:border-violet-500/30 hover:bg-violet-500/[0.03] 
                         hover:shadow-[0_0_15px_rgba(139,92,246,0.15)] cursor-default">
               
               <!-- Custom Outline Tech Icon -->
-              <span class="h-5 w-5 flex-shrink-0 text-zinc-400 transition-all duration-300 
-                           group-hover:scale-115 group-hover:text-violet-400 group-hover:rotate-3">
+              <span class="h-5 w-5 flex-shrink-0 text-zinc-600 dark:text-zinc-400 transition-all duration-300 
+                           group-hover:scale-115 group-hover:text-violet-600 dark:group-hover:text-violet-400 group-hover:rotate-3">
                 <component :is="tech.icon" class="w-full h-full" />
               </span>
               
               <!-- Tech Name -->
-              <span class="text-xs sm:text-sm font-semibold font-techno text-zinc-300 group-hover:text-white transition-colors duration-300">
+              <span class="text-xs sm:text-sm font-semibold font-techno text-zinc-700 dark:text-zinc-300 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors duration-300">
                 {{ tech.name }}
               </span>
 

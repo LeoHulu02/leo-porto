@@ -1,32 +1,32 @@
 <template>
   <section
     id="connect"
-    class="relative w-full overflow-hidden border-b border-violet-500/10 bg-[#050508] py-16 text-white sm:py-20 md:py-24 lg:py-28"
+    class="relative w-full overflow-hidden border-b border-violet-500/10 bg-[#EEF0F4] dark:bg-[#050508] py-16 text-zinc-900 dark:text-white sm:py-20 md:py-24 lg:py-28"
   >
     <div class="pointer-events-none absolute inset-0">
       <div class="absolute -top-24 left-1/4 h-72 w-72 rounded-full bg-violet-600/10 blur-3xl" />
       <div class="absolute -bottom-32 right-0 h-80 w-80 rounded-full bg-fuchsia-500/5 blur-3xl" />
       <div
-        class="absolute inset-0 bg-[linear-gradient(rgba(139,92,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.03)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_75%)]"
+        class="absolute inset-0 bg-[linear-gradient(rgba(124,58,237,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(124,58,237,0.06)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(139,92,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.03)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_75%)]"
       />
     </div>
 
     <div class="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <!-- Header -->
       <div class="mb-10 space-y-4 text-center md:mb-12" data-reveal>
-        <p class="text-[10px] font-semibold uppercase tracking-[0.3em] text-violet-400 font-techno sm:text-xs">
+        <p class="text-[10px] font-semibold uppercase tracking-[0.3em] text-violet-600 dark:text-violet-400 font-techno sm:text-xs">
           03 · KONTAK
         </p>
         <h2 class="text-3xl font-black leading-tight tracking-tight font-techno sm:text-4xl md:text-5xl">
           Mari Bangun
           <span
-            class="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-violet-300 bg-clip-text text-transparent"
+            class="bg-gradient-to-r from-violet-600 via-fuchsia-500 to-violet-700 dark:from-violet-400 dark:via-fuchsia-400 dark:to-violet-300 bg-clip-text text-transparent"
           >
             Solusi Digital
           </span>
           Bersama
         </h2>
-        <p class="mx-auto max-w-2xl text-sm leading-relaxed text-zinc-400 font-sans sm:text-base">
+        <p class="mx-auto max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 font-sans sm:text-base">
           Punya ide proyek, butuh developer, atau ingin diskusi teknis? Kirim pesan lewat form di bawah
           atau hubungi langsung — saya akan membalas secepat mungkin.
         </p>
@@ -40,7 +40,7 @@
           >
             <div class="mb-4 flex items-center justify-between gap-3">
               <span
-                class="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-300 font-techno"
+                class="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 font-techno"
               >
                 <span class="relative flex h-2 w-2">
                   <span
@@ -50,11 +50,11 @@
                 </span>
                 Tersedia
               </span>
-              <span class="text-[10px] text-zinc-500 font-sans">Respon ±24 jam</span>
+              <span class="text-[10px] text-zinc-600 dark:text-zinc-500 font-sans">Respon ±24 jam</span>
             </div>
 
-            <h3 class="mb-2 text-lg font-bold text-white font-techno">Prioritas Respons Cepat</h3>
-            <p class="mb-5 text-sm leading-relaxed text-zinc-400 font-sans">
+            <h3 class="mb-2 text-lg font-bold text-zinc-900 dark:text-white font-techno">Prioritas Respons Cepat</h3>
+            <p class="mb-5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 font-sans">
               Untuk kebutuhan mendesak atau briefing singkat, WhatsApp adalah kanal tercepat.
             </p>
 
@@ -86,26 +86,26 @@
               :href="channel.href"
               :target="channel.external ? '_blank' : undefined"
               :rel="channel.external ? 'noopener noreferrer' : undefined"
-              class="group flex items-start gap-3 rounded-xl border border-white/8 bg-white/[0.02] p-4 transition-all hover:border-violet-500/25 hover:bg-violet-500/[0.04] active:scale-[0.99] touch-manipulation"
+              class="group flex items-start gap-3 rounded-xl border border-zinc-900/8 bg-white/70 dark:border-white/8 dark:bg-white/[0.02] p-4 transition-all hover:border-violet-500/25 hover:bg-violet-500/[0.04] active:scale-[0.99] touch-manipulation"
             >
               <span
-                class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-zinc-300 transition-colors group-hover:border-violet-500/30 group-hover:text-violet-300"
+                class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-zinc-900/10 bg-zinc-900/5 text-zinc-700 dark:border-white/10 dark:bg-white/5 dark:text-zinc-300 transition-colors group-hover:border-violet-500/30 group-hover:text-violet-700 dark:group-hover:text-violet-300"
               >
                 <component :is="channel.icon" class="h-5 w-5" />
               </span>
               <span class="min-w-0">
-                <span class="block text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-techno">
+                <span class="block text-[10px] font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-500 font-techno">
                   {{ channel.label }}
                 </span>
-                <span class="mt-0.5 block truncate text-sm font-medium text-zinc-200 font-sans">
+                <span class="mt-0.5 block truncate text-sm font-medium text-zinc-800 dark:text-zinc-200 font-sans">
                   {{ channel.value }}
                 </span>
               </span>
             </a>
           </div>
 
-          <div class="rounded-2xl border border-white/8 bg-white/[0.02] p-5">
-            <p class="mb-3 text-[10px] font-bold uppercase tracking-wider text-zinc-500 font-techno">
+          <div class="rounded-2xl border border-zinc-900/8 bg-white/70 dark:border-white/8 dark:bg-white/[0.02] p-5">
+            <p class="mb-3 text-[10px] font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-500 font-techno">
               Sosial Media
             </p>
             <div class="flex flex-wrap gap-2">
@@ -116,7 +116,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 :aria-label="social.label"
-                class="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-xs font-semibold text-zinc-300 transition-all hover:border-violet-500/30 hover:text-white active:scale-95 font-techno touch-manipulation"
+                class="inline-flex items-center gap-2 rounded-lg border border-zinc-900/10 bg-zinc-900/5 dark:border-white/10 dark:bg-white/[0.03] px-3 py-2 text-xs font-semibold text-zinc-700 dark:text-zinc-300 transition-all hover:border-violet-500/30 hover:text-zinc-900 dark:hover:text-white active:scale-95 font-techno touch-manipulation"
               >
                 <component :is="social.icon" class="h-4 w-4" />
                 {{ social.label }}
@@ -128,11 +128,11 @@
         <!-- Right: Form -->
         <div class="lg:col-span-3" data-reveal data-reveal-delay="100">
           <div
-            class="overflow-hidden rounded-2xl border border-white/10 bg-[#08080c]/80 shadow-2xl shadow-violet-500/5 backdrop-blur-sm"
+            class="overflow-hidden rounded-2xl border border-zinc-900/10 bg-white/80 dark:border-white/10 dark:bg-[#08080c]/80 shadow-2xl shadow-violet-500/5 backdrop-blur-sm"
           >
-            <div class="border-b border-white/10 px-5 py-4 sm:px-6 sm:py-5">
-              <h3 class="text-lg font-bold text-white font-techno sm:text-xl">Kirim Pesan</h3>
-              <p class="mt-1 text-xs text-zinc-400 font-sans sm:text-sm">
+            <div class="border-b border-zinc-900/10 dark:border-white/10 px-5 py-4 sm:px-6 sm:py-5">
+              <h3 class="text-lg font-bold text-zinc-900 dark:text-white font-techno sm:text-xl">Kirim Pesan</h3>
+              <p class="mt-1 text-xs text-zinc-600 dark:text-zinc-400 font-sans sm:text-sm">
                 Isi form berikut — pesan akan langsung masuk ke inbox saya.
               </p>
             </div>
@@ -140,22 +140,22 @@
             <form class="space-y-4 p-5 sm:p-6" @submit.prevent="handleSubmit" novalidate>
               <div
                 v-if="configErrors.length"
-                class="rounded-xl border border-amber-500/25 bg-amber-500/10 px-4 py-3 text-xs leading-relaxed text-amber-100/90 font-sans sm:text-sm"
+                class="rounded-xl border border-amber-500/25 bg-amber-500/10 px-4 py-3 text-xs leading-relaxed text-amber-900 dark:text-amber-100/90 font-sans sm:text-sm"
                 role="status"
               >
-                <p class="font-semibold text-amber-200">Konfigurasi EmailJS perlu diperbaiki:</p>
+                <p class="font-semibold text-amber-800 dark:text-amber-200">Konfigurasi EmailJS perlu diperbaiki:</p>
                 <ul class="mt-2 list-inside list-disc space-y-1">
                   <li v-for="(err, i) in configErrors" :key="i">{{ err }}</li>
                 </ul>
-                <p class="mt-2 text-[11px] text-amber-200/80">
+                <p class="mt-2 text-[11px] text-amber-800/80 dark:text-amber-200/80">
                   Setelah perbaiki env di Vercel, klik <strong>Redeploy</strong> (env Vite masuk saat build).
                 </p>
               </div>
 
               <div class="grid gap-4 sm:grid-cols-2">
                 <div class="space-y-1.5">
-                  <label for="contact-name" class="block text-xs font-semibold text-zinc-300 font-sans">
-                    Nama Lengkap <span class="text-violet-400">*</span>
+                  <label for="contact-name" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 font-sans">
+                    Nama Lengkap <span class="text-violet-600 dark:text-violet-400">*</span>
                   </label>
                   <input
                     id="contact-name"
@@ -166,13 +166,13 @@
                     required
                     maxlength="80"
                     placeholder="Contoh: Budi Santoso"
-                    class="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-zinc-600 transition-colors focus:border-violet-500/50 focus:bg-white/[0.05] focus:outline-none focus:ring-2 focus:ring-violet-500/20 font-sans"
+                    class="w-full rounded-xl border border-zinc-900/10 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 transition-colors focus:border-violet-600 focus:outline-none focus:ring-2 focus:ring-violet-500/20 font-sans dark:border-white/10 dark:bg-white/[0.03] dark:text-white dark:placeholder:text-zinc-600 dark:focus:border-violet-500/50 dark:focus:bg-white/[0.05]"
                   />
                 </div>
 
                 <div class="space-y-1.5">
-                  <label for="contact-email" class="block text-xs font-semibold text-zinc-300 font-sans">
-                    Email <span class="text-violet-400">*</span>
+                  <label for="contact-email" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 font-sans">
+                    Email <span class="text-violet-600 dark:text-violet-400">*</span>
                   </label>
                   <input
                     id="contact-email"
@@ -183,32 +183,32 @@
                     required
                     maxlength="120"
                     placeholder="nama@email.com"
-                    class="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white placeholder:text-zinc-600 transition-colors focus:border-violet-500/50 focus:bg-white/[0.05] focus:outline-none focus:ring-2 focus:ring-violet-500/20 font-sans"
+                    class="w-full rounded-xl border border-zinc-900/10 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 transition-colors focus:border-violet-600 focus:outline-none focus:ring-2 focus:ring-violet-500/20 font-sans dark:border-white/10 dark:bg-white/[0.03] dark:text-white dark:placeholder:text-zinc-600 dark:focus:border-violet-500/50 dark:focus:bg-white/[0.05]"
                   />
                 </div>
               </div>
 
               <div class="space-y-1.5">
-                <label for="contact-subject" class="block text-xs font-semibold text-zinc-300 font-sans">
-                  Topik <span class="text-violet-400">*</span>
+                <label for="contact-subject" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 font-sans">
+                  Topik <span class="text-violet-600 dark:text-violet-400">*</span>
                 </label>
                 <select
                   id="contact-subject"
                   v-model="form.subject"
                   name="subject"
                   required
-                  class="w-full appearance-none rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-white transition-colors focus:border-violet-500/50 focus:bg-white/[0.05] focus:outline-none focus:ring-2 focus:ring-violet-500/20 font-sans"
+                  class="w-full appearance-none rounded-xl border border-zinc-900/10 bg-white px-4 py-3 text-sm text-zinc-900 transition-colors focus:border-violet-600 focus:outline-none focus:ring-2 focus:ring-violet-500/20 font-sans dark:border-white/10 dark:bg-white/[0.03] dark:text-white dark:focus:border-violet-500/50 dark:focus:bg-white/[0.05]"
                 >
-                  <option value="" disabled class="bg-[#08080c]">Pilih topik percakapan</option>
-                  <option v-for="topic in subjectOptions" :key="topic" :value="topic" class="bg-[#08080c]">
+                  <option value="" disabled class="bg-white dark:bg-[#08080c]">Pilih topik percakapan</option>
+                  <option v-for="topic in subjectOptions" :key="topic" :value="topic" class="bg-white dark:bg-[#08080c]">
                     {{ topic }}
                   </option>
                 </select>
               </div>
 
               <div class="space-y-1.5">
-                <label for="contact-message" class="block text-xs font-semibold text-zinc-300 font-sans">
-                  Pesan <span class="text-violet-400">*</span>
+                <label for="contact-message" class="block text-xs font-semibold text-zinc-700 dark:text-zinc-300 font-sans">
+                  Pesan <span class="text-violet-600 dark:text-violet-400">*</span>
                 </label>
                 <textarea
                   id="contact-message"
@@ -218,9 +218,9 @@
                   rows="5"
                   maxlength="2000"
                   placeholder="Ceritakan kebutuhan proyek, timeline, atau pertanyaan Anda..."
-                  class="min-h-[140px] w-full resize-y rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm leading-relaxed text-white placeholder:text-zinc-600 transition-colors focus:border-violet-500/50 focus:bg-white/[0.05] focus:outline-none focus:ring-2 focus:ring-violet-500/20 font-sans"
+                  class="min-h-[140px] w-full resize-y rounded-xl border border-zinc-900/10 bg-white px-4 py-3 text-sm leading-relaxed text-zinc-900 placeholder:text-zinc-400 transition-colors focus:border-violet-600 focus:outline-none focus:ring-2 focus:ring-violet-500/20 font-sans dark:border-white/10 dark:bg-white/[0.03] dark:text-white dark:placeholder:text-zinc-600 dark:focus:border-violet-500/50 dark:focus:bg-white/[0.05]"
                 />
-                <p class="text-right text-[10px] text-zinc-600 font-sans">{{ form.message.length }}/2000</p>
+                <p class="text-right text-[10px] text-zinc-400 dark:text-zinc-600 font-sans">{{ form.message.length }}/2000</p>
               </div>
 
               <!-- Honeypot -->
@@ -311,10 +311,10 @@ const status = reactive({
 
 const statusClass = computed(() => {
   if (status.type === 'success') {
-    return 'border border-emerald-500/25 bg-emerald-500/10 text-emerald-100'
+    return 'border border-emerald-500/25 bg-emerald-500/10 text-emerald-800 dark:text-emerald-100'
   }
   if (status.type === 'error') {
-    return 'border border-red-500/25 bg-red-500/10 text-red-100'
+    return 'border border-red-500/25 bg-red-500/10 text-red-800 dark:text-red-100'
   }
   return ''
 })

@@ -37,6 +37,15 @@
         ]
       }
     </script>
+    <script>
+      (function () {
+        try {
+          if (localStorage.getItem('leo-theme') === 'dark') {
+            document.documentElement.classList.add('dark')
+          }
+        } catch (e) {}
+      })()
+    </script>
   </head>
   <body>
     <div id="app"></div>

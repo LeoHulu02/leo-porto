@@ -10,44 +10,44 @@
     >
       <div
         v-if="activeDocument"
-        class="pdf-modal-backdrop fixed inset-0 z-[100] flex items-stretch justify-center bg-black/80 p-0 backdrop-blur-md sm:items-center sm:p-3 md:p-4 lg:p-5"
+        class="pdf-modal-backdrop fixed inset-0 z-[100] flex items-stretch justify-center bg-zinc-900/50 dark:bg-black/80 p-0 backdrop-blur-md sm:items-center sm:p-3 md:p-4 lg:p-5"
         role="dialog"
         aria-modal="true"
         :aria-label="`Pratinjau ${activeDocument.title}`"
         @click.self="closePdfPreview"
       >
         <div
-          class="pdf-modal-shell flex h-[100dvh] w-full max-w-full flex-col overflow-hidden border border-white/10 bg-[#08080c] shadow-2xl shadow-violet-500/10 sm:h-[96dvh] sm:max-h-[96dvh] sm:max-w-[min(98vw,720px)] sm:rounded-xl md:max-w-[min(96vw,960px)] md:rounded-2xl lg:max-w-[min(94vw,1140px)] xl:max-w-[min(92vw,1280px)]"
+          class="pdf-modal-shell flex h-[100dvh] w-full max-w-full flex-col overflow-hidden border border-zinc-900/10 dark:border-white/10 bg-white dark:bg-[#08080c] shadow-2xl shadow-violet-500/10 sm:h-[96dvh] sm:max-h-[96dvh] sm:max-w-[min(98vw,720px)] sm:rounded-xl md:max-w-[min(96vw,960px)] md:rounded-2xl lg:max-w-[min(94vw,1140px)] xl:max-w-[min(92vw,1280px)]"
           role="document"
           tabindex="-1"
           ref="modalRef"
         >
           <!-- Header — compact on larger screens -->
           <div
-            class="flex shrink-0 items-center justify-between gap-3 border-b border-white/10 px-4 py-3 sm:px-5 sm:py-3 md:px-6"
+            class="flex shrink-0 items-center justify-between gap-3 border-b border-zinc-900/10 dark:border-white/10 px-4 py-3 sm:px-5 sm:py-3 md:px-6"
           >
             <div class="min-w-0 flex-1">
               <div class="mb-0.5 flex flex-wrap items-center gap-2 md:mb-1">
                 <span
-                  class="rounded border border-violet-500/25 bg-violet-500/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-violet-300 font-techno"
+                  class="rounded border border-violet-500/25 bg-violet-500/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-violet-700 dark:text-violet-300 font-techno"
                 >
                   PDF
                 </span>
-                <span class="hidden text-[10px] text-zinc-500 font-sans sm:inline sm:text-xs">
+                <span class="hidden text-[10px] text-zinc-600 dark:text-zinc-500 font-sans sm:inline sm:text-xs">
                   Pratinjau dokumen
                 </span>
               </div>
-              <h2 class="truncate text-sm font-bold text-white font-techno sm:text-base md:text-lg">
+              <h2 class="truncate text-sm font-bold text-zinc-900 dark:text-white font-techno sm:text-base md:text-lg">
                 {{ activeDocument.title }}
               </h2>
-              <p class="truncate text-[11px] text-zinc-400 font-sans sm:text-xs md:text-sm">
+              <p class="truncate text-[11px] text-zinc-600 dark:text-zinc-400 font-sans sm:text-xs md:text-sm">
                 {{ activeDocument.subtitle }}
               </p>
             </div>
 
             <button
               type="button"
-              class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white transition-colors hover:bg-white/10 active:scale-95 touch-manipulation md:h-11 md:w-11"
+              class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-zinc-900/10 bg-zinc-900/5 text-zinc-900 dark:border-white/10 dark:bg-white/5 dark:text-white transition-colors hover:bg-zinc-900/10 dark:hover:bg-white/10 active:scale-95 touch-manipulation md:h-11 md:w-11"
               aria-label="Tutup pratinjau"
               @click="closePdfPreview"
             >
@@ -66,19 +66,19 @@
           </div>
 
           <!-- Preview — takes all remaining space -->
-          <div class="relative min-h-0 flex-1 bg-[#0a0a0f] p-0 sm:p-2 md:p-3">
+          <div class="relative min-h-0 flex-1 bg-zinc-100 dark:bg-[#0a0a0f] p-0 sm:p-2 md:p-3">
             <div
-              class="relative h-full overflow-hidden rounded-none border-0 bg-white sm:rounded-lg sm:border sm:border-white/10 md:rounded-xl"
+              class="relative h-full overflow-hidden rounded-none border-0 bg-white sm:rounded-lg sm:border sm:border-zinc-900/10 dark:sm:border-white/10 md:rounded-xl"
             >
               <div
                 v-if="isLoading"
-                class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 bg-[#050508]"
+                class="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 bg-[#F4F5F8] dark:bg-[#050508]"
               >
                 <div
-                  class="h-9 w-9 animate-spin rounded-full border-2 border-violet-500/20 border-t-violet-400"
+                  class="h-9 w-9 animate-spin rounded-full border-2 border-violet-500/20 border-t-violet-600 dark:border-t-violet-400"
                   aria-hidden="true"
                 />
-                <p class="text-xs text-zinc-400 font-sans">Memuat pratinjau…</p>
+                <p class="text-xs text-zinc-600 dark:text-zinc-400 font-sans">Memuat pratinjau…</p>
               </div>
 
               <iframe
@@ -91,22 +91,22 @@
             </div>
 
             <p
-              class="pointer-events-none absolute bottom-1 left-0 right-0 bg-gradient-to-t from-[#0a0a0f] via-[#0a0a0f]/90 to-transparent px-4 pb-1 pt-6 text-center text-[10px] leading-relaxed text-zinc-500 font-sans sm:hidden"
+              class="pointer-events-none absolute bottom-1 left-0 right-0 bg-gradient-to-t from-zinc-100 via-zinc-100/90 to-transparent dark:from-[#0a0a0f] dark:via-[#0a0a0f]/90 px-4 pb-1 pt-6 text-center text-[10px] leading-relaxed text-zinc-600 dark:text-zinc-500 font-sans sm:hidden"
             >
               Geser di dalam pratinjau untuk melihat halaman lainnya.
             </p>
           </div>
 
           <!-- Footer — slim toolbar -->
-          <div class="shrink-0 border-t border-white/10 px-4 py-3 sm:px-5 sm:py-3 md:px-6">
+          <div class="shrink-0 border-t border-zinc-900/10 dark:border-white/10 px-4 py-3 sm:px-5 sm:py-3 md:px-6">
             <div class="flex flex-col gap-2.5 md:flex-row md:items-center md:justify-between md:gap-4">
-              <p class="hidden text-xs leading-relaxed text-zinc-400 font-sans lg:block lg:max-w-md">
+              <p class="hidden text-xs leading-relaxed text-zinc-600 dark:text-zinc-400 font-sans lg:block lg:max-w-md">
                 {{ activeDocument.description }}
               </p>
-              <p class="text-[10px] leading-relaxed text-zinc-500 font-sans sm:text-[11px] lg:hidden">
+              <p class="text-[10px] leading-relaxed text-zinc-600 dark:text-zinc-500 font-sans sm:text-[11px] lg:hidden">
                 Unduh untuk menyimpan salinan ke perangkat Anda.
               </p>
-              <p class="hidden text-[11px] text-zinc-500 font-sans lg:block lg:shrink-0">
+              <p class="hidden text-[11px] text-zinc-600 dark:text-zinc-500 font-sans lg:block lg:shrink-0">
                 Simpan salinan dokumen ke perangkat Anda.
               </p>
 
@@ -115,7 +115,7 @@
                   :href="activeDocument.url"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-zinc-200 transition-colors hover:bg-white/10 active:scale-[0.98] font-techno touch-manipulation"
+                  class="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg border border-zinc-900/10 bg-zinc-900/5 dark:border-white/10 dark:bg-white/5 px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-zinc-700 dark:text-zinc-200 transition-colors hover:bg-zinc-900/10 dark:hover:bg-white/10 active:scale-[0.98] font-techno touch-manipulation"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
